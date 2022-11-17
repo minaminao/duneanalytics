@@ -1,0 +1,3843 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Here's how to access the Dune API via Python.">
+      
+      
+      
+        <link rel="canonical" href="https://minaminao.github.io/duneanalytics/api/quick-start/api-py/">
+      
+      <link rel="icon" href="../../../images/dune-icon-only.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Python - Dune Docs</title>
+      
+    
+    
+    <!-- Enable mkdocs-material to work without trailing slashes -->
+    <script>
+        const url = new URL(window.location)
+        if (!url.pathname.endsWith('/')) {
+            url.pathname += '/'
+            history.pushState({}, null, url)
+        }
+    </script>
+    <!-- Manually add the stylesheet, for hard-coded mkdocs-material and mkdocs-material-insiders -->
+    <link rel="stylesheet" href="/duneanalytics/assets/stylesheets/main.1d29e8d0.min.css">
+    
+
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Dune collects anonymised usage information for dune.com/docs with Posthog -->
+
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-set-up" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dune Docs" class="md-header__button md-logo" aria-label="Dune Docs" data-md-component="logo">
+      
+  <img src="../../../images/dune-icon-only.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dune Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/duneanalytics" hreflang="ja" class="md-select__link">
+                    Japanese
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://dune.com/docs/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.dune.com/v/chinese/" hreflang="zh" class="md-select__link">
+                    Chinese (Simplified)
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minaminao/duneanalytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../getting-started/" class="md-tabs__link">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reference/" class="md-tabs__link">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../spellbook/" class="md-tabs__link">
+        Spellbook
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        API
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dune Docs" class="md-nav__button md-logo" aria-label="Dune Docs" data-md-component="logo">
+      
+  <img src="../../../images/dune-icon-only.png" alt="logo">
+
+    </a>
+    Dune Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minaminao/duneanalytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../getting-started/">Getting started</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../getting-started/query-quick-start/">Query Quick Start</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Query Quick Start" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Query Quick Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/query-quick-start/example/" class="md-nav__link">
+        Example
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../getting-started/queries/">Queries</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Queries" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Queries
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/queries/data-explorer/" class="md-nav__link">
+        The Data Explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/queries/query-window/" class="md-nav__link">
+        The Query Window
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/queries/query-results/" class="md-nav__link">
+        Query Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/queries/parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/queries/tips/" class="md-nav__link">
+        Query Tips
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../getting-started/visualizations/">Visualizations</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Visualizations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Visualizations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/visualizations/charts-graphs/" class="md-nav__link">
+        Charts & Graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/visualizations/other-visualizations/" class="md-nav__link">
+        Other Visualizations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/dashboards/" class="md-nav__link">
+        Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/embeds/" class="md-nav__link">
+        Embeds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/decoding-contracts/" class="md-nav__link">
+        Decoding Contracts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/teams/" class="md-nav__link">
+        Teams
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guides" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/guides/dune-guides/" class="md-nav__link">
+        Dune Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/guides/sql-guides/" class="md-nav__link">
+        SQL Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/guides/video-tutorial/" class="md-nav__link">
+        Video Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../getting-started/use-cases/">Use Cases</a>
+          
+            <label for="__nav_2_10">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Use Cases" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/use-cases/project-dashboards/" class="md-nav__link">
+        Project Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/use-cases/sector-dashboards/" class="md-nav__link">
+        Sector Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/use-cases/ecosystem-dashboards/" class="md-nav__link">
+        Ecosystem Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/">Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/support-feedback/" class="md-nav__link">
+        Support & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/dune-v2/">Dune v2</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dune v2" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dune v2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/dune-v2/query-engine/" class="md-nav__link">
+        Query Engine
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/">Tables</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Tables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/available-chains/" class="md-nav__link">
+        Available Chains
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3" type="checkbox" id="__nav_3_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/raw/">Raw Tables</a>
+          
+            <label for="__nav_3_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Raw Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Raw Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/blocks/" class="md-nav__link">
+        Blocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/event-logs/" class="md-nav__link">
+        Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/traces/" class="md-nav__link">
+        Traces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3_6" type="checkbox" id="__nav_3_4_3_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/raw/solana/">Solana</a>
+          
+            <label for="__nav_3_4_3_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Solana" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/account-activity/" class="md-nav__link">
+        Account activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/blocks/" class="md-nav__link">
+        Blocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/rewards/" class="md-nav__link">
+        Rewards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/vote-transactions/" class="md-nav__link">
+        Vote Transactions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_4" type="checkbox" id="__nav_3_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/decoded/">Decoded Tables</a>
+          
+            <label for="__nav_3_4_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Decoded Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Decoded Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/decoded/call-tables/" class="md-nav__link">
+        Call Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/decoded/event-logs/" class="md-nav__link">
+        Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5" type="checkbox" id="__nav_3_4_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/spells/">Spells</a>
+          
+            <label for="__nav_3_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Spells" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Spells
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/dex.trades/" class="md-nav__link">
+        dex.trades
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/erc-20-balances/" class="md-nav__link">
+        ERC-20 balances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/labels/" class="md-nav__link">
+        Labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/nft.trades/" class="md-nav__link">
+        nft.trades
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/prices/" class="md-nav__link">
+        Prices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5_7" type="checkbox" id="__nav_3_4_5_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/spells/token-standards/">Token Standards</a>
+          
+            <label for="__nav_3_4_5_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Token Standards" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Token Standards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/token-standards/erc-20/" class="md-nav__link">
+        ERC-20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/token-standards/erc-721/" class="md-nav__link">
+        ERC-721
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/token-standards/erc-1155/" class="md-nav__link">
+        ERC-1155
+      </a>
+    </li>
+  
+
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6" type="checkbox" id="__nav_3_4_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/community/">Community Tables</a>
+          
+            <label for="__nav_3_4_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Community Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Community Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6_2" type="checkbox" id="__nav_3_4_6_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/community/flashbots/">Flashbots</a>
+          
+            <label for="__nav_3_4_6_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Flashbots" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Flashbots
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/arbitrages/" class="md-nav__link">
+        arbitrages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/liquidations/" class="md-nav__link">
+        liquidations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/mev_summary/" class="md-nav__link">
+        mev\_summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/sandwiched-swaps/" class="md-nav__link">
+        sandwiched swaps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/sandwiches/" class="md-nav__link">
+        sandwiches
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6_3" type="checkbox" id="__nav_3_4_6_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/community/reservoir/">Reservoir</a>
+          
+            <label for="__nav_3_4_6_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reservoir" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reservoir
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/ask-events/" class="md-nav__link">
+        ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/asks/" class="md-nav__link">
+        asks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/attribute-keys/" class="md-nav__link">
+        attribute keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/attributes/" class="md-nav__link">
+        attributes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/collection-floor-ask-events/" class="md-nav__link">
+        collection floor ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/collections/" class="md-nav__link">
+        collections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/sales/" class="md-nav__link">
+        sales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/token-attributes/" class="md-nav__link">
+        token attributes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/token-floor-ask-events/" class="md-nav__link">
+        token floor ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/tokens/" class="md-nav__link">
+        tokens
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/user-generated/" class="md-nav__link">
+        User Generated Tables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/types-labels/" class="md-nav__link">
+        Data Types and Labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/does-dune-have-a-token/" class="md-nav__link">
+        Does Dune have a token?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/does-dune-have-an-api/" class="md-nav__link">
+        Does Dune have an API?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/how-are-results-refreshing/" class="md-nav__link">
+        How do results get refreshed?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/how-does-dune-get-its-data/" class="md-nav__link">
+        How does Dune get data?
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/wizard-tools/">Wizard tools</a>
+          
+            <label for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Wizard tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Wizard tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/wizard-tools/blockchain-explorers/" class="md-nav__link">
+        Blockchain Explorers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/wizard-tools/helpful-dashboards/" class="md-nav__link">
+        Helpful Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/wizard-tools/utility-queries/" class="md-nav__link">
+        Utility Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/dune-bounties/" class="md-nav__link">
+        Dune Bounties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/dune-explorer/" class="md-nav__link">
+        The Dune Explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/events/" class="md-nav__link">
+        Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/pro/" class="md-nav__link">
+        Dune Pro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/recommended-reading/" class="md-nav__link">
+        Recommended Reading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/press-kit/" class="md-nav__link">
+        Press Kit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/">Spellbook</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Spellbook" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spellbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/spellbook-model-docs/" class="md-nav__link">
+        Spellbook Model Docs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/getting-started/">Getting started</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/data-modelling/" class="md-nav__link">
+        Data Modelling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/data-sources/" class="md-nav__link">
+        Data Sources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/tests/" class="md-nav__link">
+        Tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/spells/" class="md-nav__link">
+        Spells
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/submissions/" class="md-nav__link">
+        Submissions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/how-to-guides/">How to guides</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How to guides" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/examples/">Examples</a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/reformatted/" class="md-nav__link">
+        Reformatted Transfers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/daily-aggregation/" class="md-nav__link">
+        Daily Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/rolling-sum/" class="md-nav__link">
+        Rolling Sum of Daily Transfers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/final-day-balance/" class="md-nav__link">
+        Final Daily Balance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/spellbook-workshop-prerequisite/" class="md-nav__link">
+        Spellbook Workshop Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">API</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Quick Start</a>
+          
+            <label for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Quick Start" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Quick Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Python
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-set-up" class="md-nav__link">
+    Getting Set Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Set Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-the-necessary-libraries" class="md-nav__link">
+    Import the necessary libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    API Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplifying-url-generation" class="md-nav__link">
+    Simplifying URL generation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-api-endpoints-in-functions" class="md-nav__link">
+    Wrapping API endpoints in functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-dune-api" class="md-nav__link">
+    Using the Dune API
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Dune API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute-a-query" class="md-nav__link">
+    Execute a Query
+  </a>
+  
+    <nav class="md-nav" aria-label="Execute a Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-call" class="md-nav__link">
+    Function Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-query-execution-status" class="md-nav__link">
+    Get Query Execution Status
+  </a>
+  
+    <nav class="md-nav" aria-label="Get Query Execution Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-call_1" class="md-nav__link">
+    Function Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output_1" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-query-results" class="md-nav__link">
+    Get Query Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Get Query Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-call_2" class="md-nav__link">
+    Function Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output_2" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-query-execution" class="md-nav__link">
+    Cancel Query Execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterized-queries" class="md-nav__link">
+    Parameterized Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameterized Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dictionary-of-parameters" class="md-nav__link">
+    Create a Dictionary of parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-the-parameters-dictionary-to-the-execution-endpoint" class="md-nav__link">
+    Pass the parameters dictionary to the execution endpoint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-js/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community-clients/" class="md-nav__link">
+        Community Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-ready-queries/" class="md-nav__link">
+        API Ready Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../api-reference/">API Reference</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/execute-query-id/" class="md-nav__link">
+        Execute Query ID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/execution-status/" class="md-nav__link">
+        Execution Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/execution-results/" class="md-nav__link">
+        Execution Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/cancel-execution/" class="md-nav__link">
+        Cancel Execution
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/errors/" class="md-nav__link">
+        Error Codes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/functionality/" class="md-nav__link">
+        Functionality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/billing-pricing/" class="md-nav__link">
+        Billing & Pricing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/other/" class="md-nav__link">
+        Other
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/TOS/" class="md-nav__link">
+        TOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-set-up" class="md-nav__link">
+    Getting Set Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Set Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-the-necessary-libraries" class="md-nav__link">
+    Import the necessary libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-keys" class="md-nav__link">
+    API Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplifying-url-generation" class="md-nav__link">
+    Simplifying URL generation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-api-endpoints-in-functions" class="md-nav__link">
+    Wrapping API endpoints in functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-dune-api" class="md-nav__link">
+    Using the Dune API
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Dune API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute-a-query" class="md-nav__link">
+    Execute a Query
+  </a>
+  
+    <nav class="md-nav" aria-label="Execute a Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-call" class="md-nav__link">
+    Function Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-query-execution-status" class="md-nav__link">
+    Get Query Execution Status
+  </a>
+  
+    <nav class="md-nav" aria-label="Get Query Execution Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-call_1" class="md-nav__link">
+    Function Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output_1" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-query-results" class="md-nav__link">
+    Get Query Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Get Query Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-call_2" class="md-nav__link">
+    Function Call
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output_2" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel-query-execution" class="md-nav__link">
+    Cancel Query Execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterized-queries" class="md-nav__link">
+    Parameterized Queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameterized Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dictionary-of-parameters" class="md-nav__link">
+    Create a Dictionary of parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-the-parameters-dictionary-to-the-execution-endpoint" class="md-nav__link">
+    Pass the parameters dictionary to the execution endpoint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/minaminao/duneanalytics/edit/master/docs/api/quick-start/api-py.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Python</h1>
+
+<p>Let's get started using the Dune API via Python!</p>
+<p>In this example we'll be using Python3. We recommend using a virtual environment and the <code>pip</code> package manager.</p>
+<div class="admonition example">
+<p class="admonition-title">Prerequisites</p>
+<p>This Quick Start Guide assumes you have some prior experience using Python, though we aimed to make the code here easy to follow. If you have questions, please reach out to our team via the #<a href="https://discord.com/channels/757637422384283659/1019910980634939433">dune-api</a> channel on Discord.</p>
+</div>
+<h2 id="getting-set-up">Getting Set Up<a class="headerlink" href="#getting-set-up" title="Permanent link">&para;</a></h2>
+<p>We'll primarily be working with the <code>requests</code> library to access the API, so let's install it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip install requests
+</code></pre></div>
+<p>We'll also use <code>pandas</code> to load the data returned from APIs into a neat DataFrame (table), and <code>jupyter notebooks</code> to have a nice interactive interface to do all of this.</p>
+<p>So let us install these as well:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip install pandas
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip install jupyter notebook
+</code></pre></div>
+<p>We recommend following rest of the Quick Start in a jupyter notebook. You can start the interface with this simple command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>jupyter notebook
+</code></pre></div>
+<h3 id="import-the-necessary-libraries">Import the necessary libraries<a class="headerlink" href="#import-the-necessary-libraries" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">get</span><span class="p">,</span> <span class="n">post</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+<h3 id="api-keys">API Keys<a class="headerlink" href="#api-keys" title="Permanent link">&para;</a></h3>
+<p>Any call you make to the Dune API will require you to pass your API key with your call's header:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">HEADER</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x-dune-api-key&quot;</span> <span class="p">:</span> <span class="n">API_KEY</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="simplifying-url-generation">Simplifying URL generation<a class="headerlink" href="#simplifying-url-generation" title="Permanent link">&para;</a></h3>
+<p>Though not a necessary step, using this function will make it easier to generate URLs for different API endpoints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;https://api.dune.com/api/v1/&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">def</span> <span class="nf">make_api_url</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">ID</span><span class="p">):</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="sd">    We shall use this function to generate a URL to call the API.</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">url</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="n">module</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">ID</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">action</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="k">return</span> <span class="n">url</span>
+</code></pre></div>
+<h2 id="wrapping-api-endpoints-in-functions">Wrapping API endpoints in functions<a class="headerlink" href="#wrapping-api-endpoints-in-functions" title="Permanent link">&para;</a></h2>
+<p>The Dune API currently has four primary end points as documented in the <a href="../../api-reference/authentication/">API Reference</a> section. We are going to wrap these up in neat functions which will make using the Dune API as easy as a flick of the 🪄:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">execute_query</span><span class="p">(</span><span class="n">query_id</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="sd">    Takes in the query ID.</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="sd">    Calls the API to execute the query.</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="sd">    Returns the execution ID of the instance which is executing the query.</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">url</span> <span class="o">=</span> <span class="n">make_api_url</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="n">query_id</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADER</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">execution_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;execution_id&#39;</span><span class="p">]</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="k">return</span> <span class="n">execution_id</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="k">def</span> <span class="nf">get_query_status</span><span class="p">(</span><span class="n">execution_id</span><span class="p">):</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="sd">    Takes in an execution ID.</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="sd">    Fetches the status of query execution using the API</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="sd">    Returns the status response object</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">url</span> <span class="o">=</span> <span class="n">make_api_url</span><span class="p">(</span><span class="s2">&quot;execution&quot;</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="n">execution_id</span><span class="p">)</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADER</span><span class="p">)</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="k">return</span> <span class="n">response</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="k">def</span> <span class="nf">get_query_results</span><span class="p">(</span><span class="n">execution_id</span><span class="p">):</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>    <span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="sd">    Takes in an execution ID.</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="sd">    Fetches the results returned from the query using the API</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="sd">    Returns the results response object</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>    <span class="n">url</span> <span class="o">=</span> <span class="n">make_api_url</span><span class="p">(</span><span class="s2">&quot;execution&quot;</span><span class="p">,</span> <span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="n">execution_id</span><span class="p">)</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADER</span><span class="p">)</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>    <span class="k">return</span> <span class="n">response</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="k">def</span> <span class="nf">cancel_query_execution</span><span class="p">(</span><span class="n">execution_id</span><span class="p">):</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>    <span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="sd">    Takes in an execution ID.</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="sd">    Cancels the ongoing execution of the query.</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="sd">    Returns the response object.</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>    <span class="n">url</span> <span class="o">=</span> <span class="n">make_api_url</span><span class="p">(</span><span class="s2">&quot;execution&quot;</span><span class="p">,</span> <span class="s2">&quot;cancel&quot;</span><span class="p">,</span> <span class="n">execution_id</span><span class="p">)</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADER</span><span class="p">)</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a>    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h2 id="using-the-dune-api">Using the Dune API<a class="headerlink" href="#using-the-dune-api" title="Permanent link">&para;</a></h2>
+<h3 id="execute-a-query">Execute a Query<a class="headerlink" href="#execute-a-query" title="Permanent link">&para;</a></h3>
+<p>To <a href="../../api-reference/execute-query-id/">Execute a Query</a>, you can pass any <code>query_id</code> from Dune that you want to fetch data from, then pass it to the <code>execute_query</code> function:</p>
+<h4 id="function-call">Function Call<a class="headerlink" href="#function-call" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">execution_id</span> <span class="o">=</span> <span class="n">execute_query</span><span class="p">(</span><span class="s2">&quot;1258228&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
+<p>This function returns an <code>execution_id</code> which will look something like the sample output shown here:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="s1">&#39;01GCQKPC4QZ6Q8645C3JC4WBT1&#39;</span>
+</code></pre></div>
+<p>This execution ID is the required input for rest of the API functions.</p>
+<h3 id="get-query-execution-status">Get Query Execution Status<a class="headerlink" href="#get-query-execution-status" title="Permanent link">&para;</a></h3>
+<p>To get the <a href="../../api-reference/execution-status/">Query Execution Status</a>, take the <code>execution_id</code> that was returned from the <code>execute_query</code> function in the previous section, then pass it to <code>get_query_status</code> function as shown here:</p>
+<h4 id="function-call_1">Function Call<a class="headerlink" href="#function-call_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">get_query_status</span><span class="p">(</span><span class="n">execution_id</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h4>
+<p>The <code>response</code> object returned by this function will look something like the example shown here:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span><span class="err">&#39;execu</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_id&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">01</span><span class="err">GCQKPC</span><span class="mi">4</span><span class="err">QZ</span><span class="mi">6</span><span class="err">Q</span><span class="mi">8645</span><span class="err">C</span><span class="mi">3</span><span class="err">JC</span><span class="mi">4</span><span class="err">WBT</span><span class="mi">1</span><span class="err">&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w"> </span><span class="err">&#39;query_id&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">1258228</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w"> </span><span class="err">&#39;s</span><span class="kc">tate</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;QUERY_STATE_COMPLETED&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w"> </span><span class="err">&#39;submi</span><span class="kc">tte</span><span class="err">d_a</span><span class="kc">t</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">2022-09-12</span><span class="err">T</span><span class="mi">01</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">51.781328</span><span class="err">Z&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w"> </span><span class="err">&#39;expires_a</span><span class="kc">t</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">2024-09-11</span><span class="err">T</span><span class="mi">01</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">51.82013</span><span class="err">Z&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w"> </span><span class="err">&#39;execu</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_s</span><span class="kc">tarte</span><span class="err">d_a</span><span class="kc">t</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">2022-09-12</span><span class="err">T</span><span class="mi">01</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">51.806752</span><span class="err">Z&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w"> </span><span class="err">&#39;execu</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_e</span><span class="kc">n</span><span class="err">ded_a</span><span class="kc">t</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">2022-09-12</span><span class="err">T</span><span class="mi">01</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mf">51.820127</span><span class="err">Z&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w"> </span><span class="err">&#39;resul</span><span class="kc">t</span><span class="err">_me</span><span class="kc">ta</span><span class="err">da</span><span class="kc">ta</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">&#39;colum</span><span class="kc">n</span><span class="err">_</span><span class="kc">na</span><span class="err">mes&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">&#39;block_</span><span class="kc">t</span><span class="err">ime&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_a_symbol&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_b_symbol&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_a_amou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_b_amou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">   </span><span class="err">&#39;projec</span><span class="kc">t</span><span class="err">&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">   </span><span class="err">&#39;versio</span><span class="kc">n</span><span class="err">&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">   </span><span class="err">&#39;ca</span><span class="kc">te</span><span class="err">gory&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">tra</span><span class="err">der_a&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">tra</span><span class="err">der_b&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_a_amou</span><span class="kc">nt</span><span class="err">_raw&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_b_amou</span><span class="kc">nt</span><span class="err">_raw&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">   </span><span class="err">&#39;usd_amou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_a_address&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">oke</span><span class="kc">n</span><span class="err">_b_address&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">   </span><span class="err">&#39;excha</span><span class="kc">n</span><span class="err">ge_co</span><span class="kc">ntra</span><span class="err">c</span><span class="kc">t</span><span class="err">_address&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">x_hash&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">x_</span><span class="kc">fr</span><span class="err">om&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">x_</span><span class="kc">t</span><span class="err">o&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">tra</span><span class="err">ce_address&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">   </span><span class="err">&#39;ev</span><span class="kc">t</span><span class="err">_i</span><span class="kc">n</span><span class="err">dex&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">tra</span><span class="err">de_id&#39;</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">  </span><span class="err">&#39;resul</span><span class="kc">t</span><span class="err">_se</span><span class="kc">t</span><span class="err">_by</span><span class="kc">tes</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">5048</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">  </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">o</span><span class="kc">tal</span><span class="err">_row_cou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="w">  </span><span class="err">&#39;da</span><span class="kc">ta</span><span class="err">poi</span><span class="kc">nt</span><span class="err">_cou</span><span class="kc">nt</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">  </span><span class="err">&#39;pe</span><span class="kc">n</span><span class="err">di</span><span class="kc">n</span><span class="err">g_</span><span class="kc">t</span><span class="err">ime_millis&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="w">  </span><span class="err">&#39;execu</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_</span><span class="kc">t</span><span class="err">ime_millis&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">}}</span><span class="w"></span>
+</code></pre></div>
+<p>In most cases, you will primarily be concerned with accessing the <code>state</code> property in this JSON object, which in this case is <code>QUERY_STATE_COMPLETED</code>.</p>
+<h3 id="get-query-results">Get Query Results<a class="headerlink" href="#get-query-results" title="Permanent link">&para;</a></h3>
+<p>Finally, let's load the results from the now-completed execution of our Query.</p>
+<h4 id="function-call_2">Function Call<a class="headerlink" href="#function-call_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">get_query_results</span><span class="p">(</span><span class="n">execution_id</span><span class="p">)</span>
+</code></pre></div>
+<p>Lets wrap the data received from this JSON <code>response</code> object up into a neat pandas Dataframe.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;rows&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h4 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h4>
+<p>If everything worked smoothly, you should see your data in the <code>data</code> variable returned by this function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="mi">0</span>   <span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">14</span><span class="n">T15</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">39</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">191</span> \<span class="n">xf82d8ec196fb0d56c6b82a8b1870f09502a49f88</span>  <span class="n">Uniswap</span> \<span class="n">xa2b4c0af19cc16a6cfacce81f192b024d625817d</span>  <span class="mf">7.819632e+11</span>    <span class="mi">781963170639542600000</span>   <span class="n">KISHU</span>   \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="o">...</span> <span class="n">WETH</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x75e29a7676717b99da65c6faad2e7644d00e2053</span>  <span class="kc">None</span>    \<span class="n">x75e29a7676717b99da65c6faad2e7644d00e2053</span>  \<span class="n">x6bc05c2bc156a60c1cacfc379540ad00b7280796613b</span><span class="o">...</span>   \<span class="n">x7a250d5630b4cf539739df2c5dacb4c659f2488d</span>  <span class="mf">10387.825000</span>    <span class="mi">2</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="mi">1</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">37</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">11</span>  \<span class="n">x6591c4bcd6d7a1eb4e537da8b78676c1576ba244</span>  <span class="n">Uniswap</span> \<span class="n">xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48</span>  <span class="mf">1.007936e+04</span>    <span class="mi">10079361085</span> <span class="n">USDC</span>    \<span class="n">x0391d2021f89dc339f60fff84546ea23e337750f</span>  <span class="o">...</span> <span class="n">BOND</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x0000006daea1723962647b7e189d311d757fb793</span>  <span class="kc">None</span>    \<span class="n">x0000495194ec698fcf89ccf8abb445daf01db497</span>  \<span class="n">x8b962e59ca9f1d91e465a7af289b4b4c9c7c64c6d30d</span><span class="o">...</span>   \<span class="n">x0000006daea1723962647b7e189d311d757fb793</span>  <span class="mf">10093.794730</span>    <span class="mi">2</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="mi">2</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">12</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">438</span> \<span class="n">xa25b34d2ec38e338bde108c8c4040be88945d024</span>  <span class="n">Uniswap</span> \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="mf">1.015798e-01</span>    <span class="mi">101579832516438100</span>  <span class="n">WETH</span>    \<span class="n">x8020734a29ee290fb81992874bd1de01a16c4204</span>  <span class="o">...</span> <span class="kc">None</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x68b3465833fb72a70ecdf485e0e4c7bd8665fc45</span>  <span class="kc">None</span>    \<span class="n">xaac6fb32fd0a7a51768bddd4ac2f643445bd01af</span>  \<span class="n">x8bbaff042cea60af88fac791c4d20f84ed7d21601c41</span><span class="o">...</span>   \<span class="n">x68b3465833fb72a70ecdf485e0e4c7bd8665fc45</span>  <span class="mf">342.732387</span>  <span class="mi">2</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="mi">3</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">12</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">339</span> \<span class="n">x8ef79d6c328c25da633559c20c75f638a4863462</span>  <span class="n">Uniswap</span> \<span class="n">xa71d0588eaf47f12b13cf8ec750430d21df04974</span>  <span class="mf">1.058343e+09</span>    <span class="mf">1058343424775444053499052032.0</span>  <span class="n">QOM</span> \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="o">...</span> <span class="n">WETH</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x7540000cab63979795c7d4b326cadbb00ed24a04</span>  <span class="kc">None</span>    \<span class="n">x7540000cab63979795c7d4b326cadbb00ed24a04</span>  \<span class="n">x8bea318de386a65ac1c0c88f13e39654c3d4ec53a412</span><span class="o">...</span>   \<span class="n">x68b3465833fb72a70ecdf485e0e4c7bd8665fc45</span>  <span class="mf">263.520686</span>  <span class="mi">2</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="mi">4</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">58</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">149</span> \<span class="n">x9c84f58bb51fabd18698efe95f5bab4f33e96e8f</span>  <span class="n">Uniswap</span> \<span class="n">xb620be8a1949aa9532e6a3510132864ef9bc3f82</span>  <span class="n">NaN</span> <span class="mf">21168910617154070511616.0</span>   <span class="kc">None</span>    \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="o">...</span> <span class="n">WETH</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">xdf29ee8f6d1b407808eb0270f5b128dc28303684</span>  <span class="kc">None</span>    \<span class="n">xdf29ee8f6d1b407808eb0270f5b128dc28303684</span>  \<span class="n">x8bf5a55a772b3c3423ee628bd459655a1d7bd09a5c69</span><span class="o">...</span>   \<span class="n">xdef171fe48cf0115b1d80b88dc8eab59176fee57</span>  <span class="mf">675.194000</span>  <span class="mi">2</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="mi">5</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">20</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">266</span> \<span class="n">x847e0b52589c9e6fa2dcc42b8ffb34ec924d4cf8</span>  <span class="n">Uniswap</span> \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="mf">8.903535e-04</span>    <span class="mi">890353516515079</span> <span class="n">WETH</span>    \<span class="n">x9cf77be84214beb066f26a4ea1c38ddcc2afbcf7</span>  <span class="o">...</span> <span class="kc">None</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x7a250d5630b4cf539739df2c5dacb4c659f2488d</span>  <span class="kc">None</span>    \<span class="n">xf2d229cc832661de2aa56249c5b7991006868522</span>  \<span class="n">x8c00c8c20b1f3f1b447c579165c2759c688981dbc408</span><span class="o">...</span>   \<span class="n">x1b2cf79d0a3622f25fbe10e968b3b25a348e008b</span>  <span class="mf">3.004792</span>    <span class="mi">2</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="mi">6</span>   <span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span><span class="n">T16</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">09</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">88</span>  \<span class="n">x0d4a11d5eeaac28ec3f61d100daf4d40471f1852</span>  <span class="n">Uniswap</span> \<span class="n">xdac17f958d2ee523a2206206994597c13d831ec7</span>  <span class="mf">1.003227e+02</span>    <span class="mi">100322742</span>   <span class="n">USDT</span>    \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="o">...</span> <span class="n">WETH</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x773dd321873fe70553acc295b1b49a104d968cc8</span>  <span class="kc">None</span>    \<span class="n">x7af55e2ab6e74f338d674537958ad236d17ab3ac</span>  \<span class="n">x6bc07c4f53719ad8d1a0f5f99d2db3699fa9dce888e3</span><span class="o">...</span>   \<span class="n">x8df6084e3b84a65ab9dd2325b5422e5debd8944a</span>  <span class="mf">100.372301</span>  <span class="mi">2</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="mi">7</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">39</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">219</span> \<span class="n">xaa51ea59c985a92ce881517a8896931d4a86e9e3</span>  <span class="n">Uniswap</span> \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="mf">3.214029e-01</span>    <span class="mi">321402936315917950</span>  <span class="n">WETH</span>    \<span class="n">x4846b0cce69121e4d25b6efe7738eaf27bca7e7f</span>  <span class="o">...</span> <span class="kc">None</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x7a250d5630b4cf539739df2c5dacb4c659f2488d</span>  <span class="kc">None</span>    \<span class="n">xa053dbafba05e307a7bddede09c7feb235dc34b1</span>  \<span class="n">x8c86abc9c4eaff2b8de48351360781bc153cd16fa108</span><span class="o">...</span>   \<span class="n">x68b3465833fb72a70ecdf485e0e4c7bd8665fc45</span>  <span class="mf">1084.606349</span> <span class="mi">2</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="mi">8</span>   <span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span><span class="n">T16</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">09</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">91</span>  \<span class="n">x773dd321873fe70553acc295b1b49a104d968cc8</span>  <span class="n">Uniswap</span> \<span class="n">x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce</span>  <span class="mf">6.477303e+06</span>    <span class="mf">6477302710423104532774912.0</span> <span class="n">SHIB</span>    \<span class="n">xdac17f958d2ee523a2206206994597c13d831ec7</span>  <span class="o">...</span> <span class="n">USDT</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x8df6084e3b84a65ab9dd2325b5422e5debd8944a</span>  <span class="kc">None</span>    \<span class="n">x7af55e2ab6e74f338d674537958ad236d17ab3ac</span>  \<span class="n">x6bc07c4f53719ad8d1a0f5f99d2db3699fa9dce888e3</span><span class="o">...</span>   \<span class="n">x8df6084e3b84a65ab9dd2325b5422e5debd8944a</span>  <span class="mf">103.636843</span>  <span class="mi">2</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="mi">9</span>   <span class="mi">2022</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">06</span><span class="n">T07</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">39</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="n">DEX</span> <span class="mi">234</span> \<span class="n">xaa51ea59c985a92ce881517a8896931d4a86e9e3</span>  <span class="n">Uniswap</span> \<span class="n">xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2</span>  <span class="mf">1.127058e-01</span>    <span class="mi">112705776325968480</span>  <span class="n">WETH</span>    \<span class="n">x4846b0cce69121e4d25b6efe7738eaf27bca7e7f</span>  <span class="o">...</span> <span class="kc">None</span>    <span class="p">[]</span>  <span class="mi">1</span>   \<span class="n">x68b3465833fb72a70ecdf485e0e4c7bd8665fc45</span>  <span class="kc">None</span>    \<span class="n">xa053dbafba05e307a7bddede09c7feb235dc34b1</span>  \<span class="n">x8c86abc9c4eaff2b8de48351360781bc153cd16fa108</span><span class="o">...</span>   \<span class="n">x68b3465833fb72a70ecdf485e0e4c7bd8665fc45</span>  <span class="mf">380.336913</span>  <span class="mi">2</span>
+</code></pre></div>
+<p>So you now have data from your Dune query.</p>
+<p>In a table.</p>
+<p>In Python. </p>
+<p>🧙🪄</p>
+<h3 id="cancel-query-execution">Cancel Query Execution<a class="headerlink" href="#cancel-query-execution" title="Permanent link">&para;</a></h3>
+<p>Some queries can take a long time to execute (minutes).</p>
+<p>Depending on your workflow, you may want to interrupt execution at times. Here's how to do that:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">response</span> <span class="o">=</span> <span class="n">cancel_query_execution</span><span class="p">(</span><span class="n">execution_id</span><span class="p">)</span>
+</code></pre></div>
+<p>When you have a running Query and call this function, you'll get a response object returned to you confirming the cancellation of query execution.</p>
+<h2 id="parameterized-queries">Parameterized Queries<a class="headerlink" href="#parameterized-queries" title="Permanent link">&para;</a></h2>
+<p>Only one step changes when you are working with parameterized queries - you need to pass query parameters to the execution endpoint of our API. There is no change to working with rest of the endpoints after this step.</p>
+<p>So let's define a function <code>execute_query_with_params</code> to call the execute endpoint for parameterized queries:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span> <span class="nf">execute_query_with_params</span><span class="p">(</span><span class="n">query_id</span><span class="p">,</span> <span class="n">param_dict</span><span class="p">):</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="sd">    Takes in the query ID. And a dictionary containing parameter values.</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="sd">    Calls the API to execute the query.</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="sd">    Returns the execution ID of the instance which is executing the query.</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="n">url</span> <span class="o">=</span> <span class="n">make_api_url</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="n">query_id</span><span class="p">)</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADER</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;query_parameters&quot;</span> <span class="p">:</span> <span class="n">param_dict</span><span class="p">})</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="n">execution_id</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;execution_id&#39;</span><span class="p">]</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>    <span class="k">return</span> <span class="n">execution_id</span>
+</code></pre></div>
+<h4 id="create-a-dictionary-of-parameters">Create a Dictionary of parameters<a class="headerlink" href="#create-a-dictionary-of-parameters" title="Permanent link">&para;</a></h4>
+<p>For our example, we're creating a dictionary with just one key, the <code>wallet_address</code>, for use in a query that returns the total amount spent on gas from a given <code>wallet_address</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;wallet_address&quot;</span> <span class="p">:</span> <span class="s2">&quot;0xb10f35351ff21bb81dc02d4fd901ac5ae34e8dc4&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h4 id="pass-the-parameters-dictionary-to-the-execution-endpoint">Pass the parameters dictionary to the execution endpoint<a class="headerlink" href="#pass-the-parameters-dictionary-to-the-execution-endpoint" title="Permanent link">&para;</a></h4>
+<p>Now let's make use of the function that we just defined to achieve this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">execution_id</span> <span class="o">=</span> <span class="n">execute_query_with_params</span><span class="p">(</span><span class="s2">&quot;638435&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+</code></pre></div>
+<p>And that is it!</p>
+<p>Once you get the <code>execution_id</code> from this POST endpoint, you can use it with all the GET endpoints of the API, just like you would with a simple query without parameters.</p>
+<div class="admonition complete-code">
+<p class="admonition-title">Complete-code</p>
+<p>The complete code for this tutorial is available on <a href="https://github.com/SusmeetJain/dune_api_python">this link</a>.</p>
+</div>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Quick Start" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              API Quick Start
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../api-js/" class="md-footer__link md-footer__link--next" aria-label="Next: Javascript" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Javascript
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

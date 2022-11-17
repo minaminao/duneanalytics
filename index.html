@@ -1,0 +1,3683 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Dune Docs">
+      
+      
+      
+        <link rel="canonical" href="https://minaminao.github.io/duneanalytics/">
+      
+      <link rel="icon" href="images/dune-icon-only.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Welcome - Dune Docs</title>
+      
+    
+    
+    <!-- Enable mkdocs-material to work without trailing slashes -->
+    <script>
+        const url = new URL(window.location)
+        if (!url.pathname.endsWith('/')) {
+            url.pathname += '/'
+            history.pushState({}, null, url)
+        }
+    </script>
+    <!-- Manually add the stylesheet, for hard-coded mkdocs-material and mkdocs-material-insiders -->
+    <link rel="stylesheet" href="/duneanalytics/assets/stylesheets/main.1d29e8d0.min.css">
+    
+
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Dune collects anonymised usage information for dune.com/docs with Posthog -->
+
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dune-in-5-minutes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Dune Docs" class="md-header__button md-logo" aria-label="Dune Docs" data-md-component="logo">
+      
+  <img src="images/dune-icon-only.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dune Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Welcome
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/duneanalytics" hreflang="ja" class="md-select__link">
+                    Japanese
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://dune.com/docs/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.dune.com/v/chinese/" hreflang="zh" class="md-select__link">
+                    Chinese (Simplified)
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minaminao/duneanalytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="." class="md-tabs__link md-tabs__link--active">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="getting-started/" class="md-tabs__link">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="reference/" class="md-tabs__link">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="spellbook/" class="md-tabs__link">
+        Spellbook
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="api/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Dune Docs" class="md-nav__button md-logo" aria-label="Dune Docs" data-md-component="logo">
+      
+  <img src="images/dune-icon-only.png" alt="logo">
+
+    </a>
+    Dune Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minaminao/duneanalytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Welcome
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Welcome
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dune-in-5-minutes" class="md-nav__link">
+    Dune in 5-minutes ⚡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-data-flows" class="md-nav__link">
+    How the data flows
+  </a>
+  
+    <nav class="md-nav" aria-label="How the data flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-chain-adds-a-block" class="md-nav__link">
+      1. A chain adds a block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-node-providers-transmit-data-to-dune" class="md-nav__link">
+     2. Node providers transmit data to Dune
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dune-adds-raw-data-to-sql-tables" class="md-nav__link">
+     3. Dune adds raw data to SQL tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dune-decodes-raw-data" class="md-nav__link">
+     4. Dune decodes raw data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-dune-community-casts-spells" class="md-nav__link">
+     5. The Dune community casts Spells
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-dune-wizards-make-magic" class="md-nav__link">
+     6. Dune Wizards make magic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-with-dunecom" class="md-nav__link">
+    Making 🪄 with dune.com
+  </a>
+  
+    <nav class="md-nav" aria-label="Making 🪄 with dune.com">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizations" class="md-nav__link">
+    Visualizations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboards" class="md-nav__link">
+    Dashboards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-navigate-these-docs" class="md-nav__link">
+    How to navigate these docs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dune-is-a-community-effort" class="md-nav__link">
+    Dune is a community effort
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="getting-started/">Getting started</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="getting-started/query-quick-start/">Query Quick Start</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Query Quick Start" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Query Quick Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/query-quick-start/example/" class="md-nav__link">
+        Example
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="getting-started/queries/">Queries</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Queries" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Queries
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/queries/data-explorer/" class="md-nav__link">
+        The Data Explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/queries/query-window/" class="md-nav__link">
+        The Query Window
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/queries/query-results/" class="md-nav__link">
+        Query Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/queries/parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/queries/tips/" class="md-nav__link">
+        Query Tips
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="getting-started/visualizations/">Visualizations</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Visualizations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Visualizations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/visualizations/charts-graphs/" class="md-nav__link">
+        Charts & Graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/visualizations/other-visualizations/" class="md-nav__link">
+        Other Visualizations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/dashboards/" class="md-nav__link">
+        Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/embeds/" class="md-nav__link">
+        Embeds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/decoding-contracts/" class="md-nav__link">
+        Decoding Contracts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/teams/" class="md-nav__link">
+        Teams
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guides" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/guides/dune-guides/" class="md-nav__link">
+        Dune Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/guides/sql-guides/" class="md-nav__link">
+        SQL Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/guides/video-tutorial/" class="md-nav__link">
+        Video Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="getting-started/use-cases/">Use Cases</a>
+          
+            <label for="__nav_2_10">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Use Cases" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/use-cases/project-dashboards/" class="md-nav__link">
+        Project Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/use-cases/sector-dashboards/" class="md-nav__link">
+        Sector Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting-started/use-cases/ecosystem-dashboards/" class="md-nav__link">
+        Ecosystem Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/">Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/support-feedback/" class="md-nav__link">
+        Support & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/dune-v2/">Dune v2</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dune v2" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dune v2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/dune-v2/query-engine/" class="md-nav__link">
+        Query Engine
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/">Tables</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Tables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/available-chains/" class="md-nav__link">
+        Available Chains
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3" type="checkbox" id="__nav_3_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/raw/">Raw Tables</a>
+          
+            <label for="__nav_3_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Raw Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Raw Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/blocks/" class="md-nav__link">
+        Blocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/event-logs/" class="md-nav__link">
+        Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/traces/" class="md-nav__link">
+        Traces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3_6" type="checkbox" id="__nav_3_4_3_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/raw/solana/">Solana</a>
+          
+            <label for="__nav_3_4_3_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Solana" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/solana/account-activity/" class="md-nav__link">
+        Account activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/solana/blocks/" class="md-nav__link">
+        Blocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/solana/rewards/" class="md-nav__link">
+        Rewards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/solana/transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/raw/solana/vote-transactions/" class="md-nav__link">
+        Vote Transactions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_4" type="checkbox" id="__nav_3_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/decoded/">Decoded Tables</a>
+          
+            <label for="__nav_3_4_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Decoded Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Decoded Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/decoded/call-tables/" class="md-nav__link">
+        Call Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/decoded/event-logs/" class="md-nav__link">
+        Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5" type="checkbox" id="__nav_3_4_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/spells/">Spells</a>
+          
+            <label for="__nav_3_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Spells" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Spells
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/dex.trades/" class="md-nav__link">
+        dex.trades
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/erc-20-balances/" class="md-nav__link">
+        ERC-20 balances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/labels/" class="md-nav__link">
+        Labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/nft.trades/" class="md-nav__link">
+        nft.trades
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/prices/" class="md-nav__link">
+        Prices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5_7" type="checkbox" id="__nav_3_4_5_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/spells/token-standards/">Token Standards</a>
+          
+            <label for="__nav_3_4_5_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Token Standards" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Token Standards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/token-standards/erc-20/" class="md-nav__link">
+        ERC-20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/token-standards/erc-721/" class="md-nav__link">
+        ERC-721
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/spells/token-standards/erc-1155/" class="md-nav__link">
+        ERC-1155
+      </a>
+    </li>
+  
+
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6" type="checkbox" id="__nav_3_4_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/community/">Community Tables</a>
+          
+            <label for="__nav_3_4_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Community Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Community Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6_2" type="checkbox" id="__nav_3_4_6_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/community/flashbots/">Flashbots</a>
+          
+            <label for="__nav_3_4_6_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Flashbots" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Flashbots
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/flashbots/arbitrages/" class="md-nav__link">
+        arbitrages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/flashbots/liquidations/" class="md-nav__link">
+        liquidations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/flashbots/mev_summary/" class="md-nav__link">
+        mev\_summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/flashbots/sandwiched-swaps/" class="md-nav__link">
+        sandwiched swaps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/flashbots/sandwiches/" class="md-nav__link">
+        sandwiches
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6_3" type="checkbox" id="__nav_3_4_6_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/tables/community/reservoir/">Reservoir</a>
+          
+            <label for="__nav_3_4_6_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reservoir" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reservoir
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/ask-events/" class="md-nav__link">
+        ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/asks/" class="md-nav__link">
+        asks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/attribute-keys/" class="md-nav__link">
+        attribute keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/attributes/" class="md-nav__link">
+        attributes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/collection-floor-ask-events/" class="md-nav__link">
+        collection floor ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/collections/" class="md-nav__link">
+        collections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/sales/" class="md-nav__link">
+        sales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/token-attributes/" class="md-nav__link">
+        token attributes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/token-floor-ask-events/" class="md-nav__link">
+        token floor ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/community/reservoir/tokens/" class="md-nav__link">
+        tokens
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/tables/user-generated/" class="md-nav__link">
+        User Generated Tables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/types-labels/" class="md-nav__link">
+        Data Types and Labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/faq/does-dune-have-a-token/" class="md-nav__link">
+        Does Dune have a token?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/faq/does-dune-have-an-api/" class="md-nav__link">
+        Does Dune have an API?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/faq/how-are-results-refreshing/" class="md-nav__link">
+        How do results get refreshed?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/faq/how-does-dune-get-its-data/" class="md-nav__link">
+        How does Dune get data?
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/wizard-tools/">Wizard tools</a>
+          
+            <label for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Wizard tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Wizard tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/wizard-tools/blockchain-explorers/" class="md-nav__link">
+        Blockchain Explorers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/wizard-tools/helpful-dashboards/" class="md-nav__link">
+        Helpful Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/wizard-tools/utility-queries/" class="md-nav__link">
+        Utility Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/dune-bounties/" class="md-nav__link">
+        Dune Bounties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/dune-explorer/" class="md-nav__link">
+        The Dune Explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/events/" class="md-nav__link">
+        Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/pro/" class="md-nav__link">
+        Dune Pro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/recommended-reading/" class="md-nav__link">
+        Recommended Reading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/press-kit/" class="md-nav__link">
+        Press Kit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="spellbook/">Spellbook</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Spellbook" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spellbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/spellbook-model-docs/" class="md-nav__link">
+        Spellbook Model Docs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="spellbook/getting-started/">Getting started</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/getting-started/data-modelling/" class="md-nav__link">
+        Data Modelling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/getting-started/data-sources/" class="md-nav__link">
+        Data Sources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/getting-started/tests/" class="md-nav__link">
+        Tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/getting-started/spells/" class="md-nav__link">
+        Spells
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/getting-started/submissions/" class="md-nav__link">
+        Submissions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="spellbook/how-to-guides/">How to guides</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How to guides" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="spellbook/examples/">Examples</a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/examples/reformatted/" class="md-nav__link">
+        Reformatted Transfers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/examples/daily-aggregation/" class="md-nav__link">
+        Daily Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/examples/rolling-sum/" class="md-nav__link">
+        Rolling Sum of Daily Transfers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/examples/final-day-balance/" class="md-nav__link">
+        Final Daily Balance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="spellbook/spellbook-workshop-prerequisite/" class="md-nav__link">
+        Spellbook Workshop Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="api/">API</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="api/quick-start/">Quick Start</a>
+          
+            <label for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Quick Start" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Quick Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/quick-start/api-py/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/quick-start/api-js/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/quick-start/community-clients/" class="md-nav__link">
+        Community Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/quick-start/api-ready-queries/" class="md-nav__link">
+        API Ready Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="api/api-reference/">API Reference</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/api-reference/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/api-reference/execute-query-id/" class="md-nav__link">
+        Execute Query ID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/api-reference/execution-status/" class="md-nav__link">
+        Execution Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/api-reference/execution-results/" class="md-nav__link">
+        Execution Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/api-reference/cancel-execution/" class="md-nav__link">
+        Cancel Execution
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/api-reference/errors/" class="md-nav__link">
+        Error Codes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/FAQ/functionality/" class="md-nav__link">
+        Functionality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/FAQ/billing-pricing/" class="md-nav__link">
+        Billing & Pricing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/FAQ/other/" class="md-nav__link">
+        Other
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/FAQ/TOS/" class="md-nav__link">
+        TOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dune-in-5-minutes" class="md-nav__link">
+    Dune in 5-minutes ⚡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-data-flows" class="md-nav__link">
+    How the data flows
+  </a>
+  
+    <nav class="md-nav" aria-label="How the data flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-a-chain-adds-a-block" class="md-nav__link">
+      1. A chain adds a block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-node-providers-transmit-data-to-dune" class="md-nav__link">
+     2. Node providers transmit data to Dune
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dune-adds-raw-data-to-sql-tables" class="md-nav__link">
+     3. Dune adds raw data to SQL tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dune-decodes-raw-data" class="md-nav__link">
+     4. Dune decodes raw data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-dune-community-casts-spells" class="md-nav__link">
+     5. The Dune community casts Spells
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-dune-wizards-make-magic" class="md-nav__link">
+     6. Dune Wizards make magic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-with-dunecom" class="md-nav__link">
+    Making 🪄 with dune.com
+  </a>
+  
+    <nav class="md-nav" aria-label="Making 🪄 with dune.com">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizations" class="md-nav__link">
+    Visualizations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboards" class="md-nav__link">
+    Dashboards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-navigate-these-docs" class="md-nav__link">
+    How to navigate these docs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dune-is-a-community-effort" class="md-nav__link">
+    Dune is a community effort
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/minaminao/duneanalytics/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Welcome</h1>
+
+<style>
+.md-typeset h1,
+.md-content__button {
+display: none;
+}
+.md-header__topic{
+font-weight: bold;
+}
+</style>
+
+<p><img alt="Dune Docs cover" src="images/dune-docs-cover.jpg" /></p>
+<p>Duneは、膨大なブロックチェーンデータを発見、探索、可視化するために必要なすべてのツールを備えた、ブロックチェーン研究のための強力なツールです。</p>
+<p>デューンは、こんな疑問を解決する鍵になります。</p>
+<ul>
+<li>
+<p><a href="https://dune.com/queries/3">How much volume flows through Uniswap each day?</a></p>
+</li>
+<li>
+<p><a href="https://dune.com/queries/1847">Which Dex has the highest volume?</a></p>
+</li>
+<li>
+<p><a href="https://dune.com/hagaetc/stablecoins">How are important Stablecoins behaving today?</a></p>
+</li>
+</ul>
+<h2 id="dune-in-5-minutes">Dune in 5-minutes ⚡<a class="headerlink" href="#dune-in-5-minutes" title="Permanent link">&para;</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/S-cctFmR828" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<h2 id="how-the-data-flows">How the data flows<a class="headerlink" href="#how-the-data-flows" title="Permanent link">&para;</a></h2>
+<p><img alt="how the data flows" class="hoz-cent" src="images/how-the-data-flows.jpg"></p>
+<p>パブリックブロックチェーンは<a href="https://dune.com/blog/revolution-not-quarterly">open and free</a>なので、そこからデータを取得するのはそんなに難しくないはずですよね？</p>
+<p>イエスでもあり、ノーでもある。</p>
+<p>例えば、国際輸送のスピードがパリの最新クチュールの消費者需要にどのように影響するかを分析するために、従来のビジネスから孤立したデータを取得することに比べれば...。</p>
+<p>そうブロックチェーンのデータを閲覧、分析することは "簡単 "です。</p>
+<p>しかし、Duneのことわざのフードの下には多くのことが起こっています。イーサリアムのようなパブリックブロックチェーン上の状態の変化が、どのようにしてチャートやグラフを作成するためにクエリするデータに変わるのかをよりよく理解するために、フードを開けて見てみましょう。</p>
+<h3 id="1-a-chain-adds-a-block"><img alt="chain adds a block" src="images/chain-adds-a-block.png" class="vrt-cent"> <span class="vrt-cent"> 1. A chain adds a block</span><a class="headerlink" href="#1-a-chain-adds-a-block" title="Permanent link">&para;</a></h3>
+<p>技術的な詳細はさまざまですが、すべてのブロックチェーンの中核には、一連の取引が提案され、合意された後、以前に合意された取引を含むブロックのチェーンの末尾に追加されるようになっています。</p>
+<p>どのブロックを次のブロックとするかは、様々な<a href="https://crypto.com/university/consensus-mechanisms-in-blockchain">consensus mechanisms</a>、方法がありますが、コンセンサスが得られると、最新のブロックに関する情報がブロックチェーンのネットワークにブロードキャストされ、参加者（「ノード」）にこの新しいブロックを知らせ、自分の記録に追加することができます。</p>
+<p>ブロックチェーンの仕組みについて詳しく知りたい方は<a href="https://andersbrownworth.com/blockchain/">Check out this awesome Blockchain 101 demo</a>!</p>
+<h3 id="2-node-providers-transmit-data-to-dune"><img alt="nodes transmit to dune" src="images/nodes-transmit-to-dune.png" class="vrt-cent"><span class="vrt-cent"> 2. Node providers transmit data to Dune</span><a class="headerlink" href="#2-node-providers-transmit-data-to-dune" title="Permanent link">&para;</a></h3>
+<p>この「新しいブロックが作成された」というメッセージを受け取るには、誰かが<a href="https://www.alchemy.com/overviews/what-is-an-ethereum-node">blockchain node</a>を実行する必要があります。<a href="https://www.alchemy.com/overviews/what-is-an-ethereum-node">blockchain node</a>は、ブロックチェーンのネットワークに接続し、他のノード間で情報を送ったり、場合によっては取引の検証やデータの保存を可能にする「クライアント」ソフトウェアを実行するコンピュータです。</p>
+<p>ちょっとした技術的なノウハウがあれば、誰でもノードを動かすことができる。それがブロックチェーン<em>public</em>の大きな特徴です</p>
+<p>ほぼ全員がノードを運営できるため、参加者の誠実さを保つために、システムには多くの透明性があります。</p>
+<p>この透明性により、データアナリストが「何が起こっているか」の全体像にアクセスし、あらゆる種類の分析を行うことができるようになり、ハイブマインドを活用することも可能になります。</p>
+<p>生データにアクセスするための苦労は必要ない。</p>
+<p>Duneのようなプロジェクトが大規模に運用できるように、<a href="https://www.alchemy.com/overviews/blockchain-node-providers">node providers</a>はブロックチェーンのデータを取得するノードインフラを構築・運用し、アプリケーションプログラミングインターフェース（API）を通じて私たちがアクセスできるようにします。</p>
+<p>こうすることで、私たちは可能な限り最高のデータアクセス体験を提供することに集中でき、ノードプロバイダーは可能な限り効率的にノードを稼働させることに集中できるのです。</p>
+<h3 id="3-dune-adds-raw-data-to-sql-tables"><img alt="dune adds to sql tables" src="images/dune-adds-to-sql-tables.png" class="vrt-cent"><span class="vrt-cent"> 3. Dune adds raw data to SQL tables</span><a class="headerlink" href="#3-dune-adds-raw-data-to-sql-tables" title="Permanent link">&para;</a></h3>
+<p>ノードプロバイダーはブロックチェーンの取引データをハッシュ化されたバイトコードとして送ってきます（例えば、イーサリアムのデータは<a href="https://medium.com/0xcode/hashing-functions-in-solidity-using-keccak256-70779ea55bb0">the keccak256 algorithm</a>でハッシュ化されています）。</p>
+<p>Dune Data Engineはこのバイトコードを取り出し、"<a href="https://dune.com/docs/tables/v2/raw/">Raw Data</a> "と呼ぶテーブル群に抽出します。</p>
+<p>これらはチェーンによって多少異なりますが、一例として、ほとんどの<a href="https://dune.com/docs/tables/v2/raw/ethereum-mainnet/creation-traces/">Ethereum Virtual Machine (EVM)</a>ベースのチェーンでは、以下のようなものがあります。</p>
+<ul>
+<li>
+<p><a href="https://dune.com/docs/tables/v2/raw/ethereum-mainnet/blocks/">[chain].blocks</a> - チェーンに追加されたトランザクションのグループ。</p>
+</li>
+<li>
+<p><a href="https://dune.com/docs/tables/v2/raw/ethereum-mainnet/creation-traces/">[chain].creation_traces</a> - <a href="https://medium.com/coinmonks/ethereum-data-evm-traces-simplified-5e297e4f40a4"><code>create</code> traces</a>を含むトランザクション（内部トランザクションに含まれることもある）</p>
+</li>
+<li>
+<p>スマートコントラクトで作成された<a href="https://dune.com/docs/tables/v2/raw/ethereum-mainnet/event-logs/">[chain].logs</a>～<a href="https://medium.com/mycrypto/understanding-event-logs-on-the-ethereum-blockchain-f4ae7ba50378">event logs</a></p>
+</li>
+<li>
+<p>ブロック内のトランザクションで発生する<a href="https://dune.com/docs/tables/v2/raw/ethereum-mainnet/traces/">[chain].traces</a>～<a href="https://medium.com/coinmonks/ethereum-data-evm-traces-simplified-5e297e4f40a4">trace data</a></p>
+</li>
+<li>
+<p><a href="https://dune.com/docs/tables/v2/raw/ethereum-mainnet/transactions/">[chain].transactions</a> - あるアドレスから別のアドレスに送信される暗号化された署名付き命令。</p>
+</li>
+</ul>
+<p>これらのテーブルのデータは人間が読むことができますが（バイトコードはそうではありません）、理解し解釈するにはブロックチェーンに関する幅広い知識が必要です。</p>
+<p>このRaw Dataは、興味深いインサイトに操作するのに多くの手間がかかることもあり、Dune <a href="https://dune.com/docs/tables/decoded/">decodes</a>はこのデータを使用しています。</p>
+<h3 id="4-dune-decodes-raw-data"><img alt="dune decodes data" src="images/dune-decodes-data.png" class="vrt-cent"><span class="vrt-cent"> 4. Dune decodes raw data</span><a class="headerlink" href="#4-dune-decodes-raw-data" title="Permanent link">&para;</a></h3>
+<p>生の<code>.log</code>テーブルは、次のようなデータを返します。</p>
+<p>この形式のデータは、かなり限定的なデータ分析のユースケースがある。</p>
+<p>このデータをより使いやすいものに変換するために、<a href="https://dune.com/contracts/new">Wizards submit smart contracts for decoding here</a>.</p>
+<p>その際、スマートコントラクトの<a href="https://www.alchemy.com/overviews/what-is-an-abi-of-a-smart-contract-examples-and-usage">Application Binary Interface (ABI)</a>というWeb2.0のAPIに似たものを使って、コントラクトとやり取りするトランザクションの中で何が起こっているかを理解します。</p>
+<p>そして、分析がしやすい<a href="https://dune.com/docs/tables/decoded/">Decoded Tables</a>を作るのです。</p>
+<p>例えば、上記のトランザクションをデコードすると、次のようになります。</p>
+<h3 id="5-the-dune-community-casts-spells"><img alt="community casts spells" src="images/community-casts-spells.png" class="vrt-cent"><span class="vrt-cent"> 5. The Dune community casts Spells</span><a class="headerlink" href="#5-the-dune-community-casts-spells" title="Permanent link">&para;</a></h3>
+<p>Duneは、Wizardsという素晴らしいコミュニティの力を借りて、<a href="https://dune.com/docs/tables/spells/">Spells</a>でデータをデコードするだけでなく、さらに一歩踏み込みました。</p>
+<p>スペルは、Duneと我々のコミュニティによって構築・維持されているカスタムテーブルで、できるだけ摩擦を少なくして多くのデータを簡単に集計できるようにします。</p>
+<p>例えば最も人気のあるスペルの1つである<a href="https://dune.com/spellbook#!/model/model.spellbook.nft_trades">nft.trades</a>は、Solana上のMagic EdenやEthereum上のLooksRareなどの取引を自分でコンパイルしなくても、プロトコルやブロックチェーン間でNFT取引データの探索と変換を簡単に行えるようにします。</p>
+<h3 id="6-dune-wizards-make-magic"><img alt="wizards make magic" src="images/wizards-make-magic.png" class="vrt-cent"><span class="vrt-cent"> 6. Dune Wizards make magic</span><a class="headerlink" href="#6-dune-wizards-make-magic" title="Permanent link">&para;</a></h3>
+<p>これらのデータから、ウィザードはデータベースへのデータの保存、操作、検索に広く使われている言語であるSQLを使って<a href="https://dune.com/docs/features/queries/">Queries</a>を構築します。</p>
+<p>このクエリから、私たちがよく知っている<a href="https://dune.com/docs/features/visualizations/">Visualizations</a>と<a href="https://dune.com/docs/features/dashboards/">Dashboards</a>が作られるのです。</p>
+<p>Eg <a href="https://dune.com/rchen8">@rchen8</a>のOpenSeaの日次ボリューム。</p>
+<p><div class="video-container"><iframe src="https://dune.com/embeds/11385/22601/a9fc0859-cac6-4111-b21d-6104e71b16b5" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<h2 id="making-with-dunecom">Making 🪄 with dune.com<a class="headerlink" href="#making-with-dunecom" title="Permanent link">&para;</a></h2>
+<p>Dune.comは、Dune Data Platformの上に構築された最初のキラーアプリで、SQL、Ethereum Virtual Machine、ビジネスの知識が少しでもあれば、誰でもできるだけ簡単にブロックチェーンデータを興味深い方法で分析できるように設計されています。</p>
+<p>Dune.comアプリの基本的な構成要素は以下のとおりです。</p>
+<ul>
+<li>
+<p><strong>Dashboards:</strong> ブロックチェーンデータの特定のグループについてのストーリーを伝えるビジュアライゼーションとテキストを含むウィジェットのセットです。</p>
+</li>
+<li>
+<p><strong>Visualizations:</strong> 表形式でわかりにくいデータを、視覚的にわかりやすくするチャートとグラフ。</p>
+</li>
+<li>
+<p><strong>Queries:</strong> Dune のデータベースからデータを抽出し、Dune のダッシュボードにテーブルとビジュアリゼーションで表示できるようにするコマンドです。</p>
+</li>
+</ul>
+<p>Dune.com の訪問者は、クエリから構築されたテキスト、テーブル、視覚化ウィジェットを含むダッシュボードを閲覧します。</p>
+<p>Dune Wizard（ブロックチェーンアナリスト）は、データを取得するためのカスタムクエリを作成し、その結果を可視化し、ダッシュボードを使用してデータを使ったストーリーを語ることができます。</p>
+<h3 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h3>
+<p>Duneは、ブロックチェーンのデータをSQLデータベースに集約し、簡単に問い合わせができるようにします。</p>
+<p><a href="getting-started/queries/">Queries</a>は、ブロックチェーンからどのようなデータを我々のデータベースで見つけて返すかを指定するために使用されます。</p>
+<p>もしかしたら、<em>all the Dex trades that happened today</em>や<em>total value of stablecoins minted this year</em>を知りたいかもしれません。どんな質問でも、答えの発見はデューンクエリから始まります!</p>
+<p>クエリーは、従来のSQLクエリーと同様にデータの行と列を返し、それを使ってダッシュボードに表示するビジュアライゼーションを作成することができます。</p>
+<p><img alt="SQL Query - Uniswap USD volume" src="images/sql-query-uniswap-usd-volume.png" /></p>
+<p>ブロックチェーンアナリスト（ウィザードすなわちあなた！）がQueriesの実行を開始するには、いくつかの方法があります。</p>
+<ol>
+<li>
+<p>最も簡単な方法は、Dune <a href="reference/tables/spells/"><em>Spells</em></a>) を使って、よく使われるデータ・テーブルを問い合わせることです。よく使われるスペルには、<code>dex.trades</code>、<code>lending.borrow</code>、<code>stablecoin.transfer</code> があります。</p>
+</li>
+<li>
+<p>ブロック、ログ、トランザクションのような生のEthereumデータを照会します。</p>
+</li>
+<li>
+<p>また、中央集権的な取引所データを照会することも可能です。例えば、<code>prices.usd</code>を使用すると、ほとんどすべての暗号資産の価格を迅速に返すことができます。</p>
+</li>
+</ol>
+<h3 id="visualizations">Visualizations<a class="headerlink" href="#visualizations" title="Permanent link">&para;</a></h3>
+<p>表形式（行と列）で表示されたデータは、読みにくいことがあります。<a href="getting-started/visualizations/">Visualizations</a> は、Query の結果を取り込み、情報を明確、正確、かつ <em>visual</em> な方法で提示します。</p>
+<p>Dune Visualizationsを使えば、こんな風に変形させることで、簡単にデータのストーリーを語り始めることができるのです。</p>
+<p><img alt="Table chart" src="images/table-chart.png" /></p>
+<p>このようなものに。</p>
+<p><img alt="Bar chart" src="images/bar-chart.png" /></p>
+<p>バーチャートで可視化すると、4月19日の転送量が最も多かったことがわかり、時系列でトレンドを把握することができます。</p>
+<p>Duneは、データを視覚的に表現するために、以下のような様々なVisualizationを提供しています。</p>
+<ul>
+<li>
+<p><strong>Bar Charts</strong></p>
+</li>
+<li>
+<p><strong>Area Charts</strong></p>
+</li>
+<li>
+<p><strong>Scatter Charts</strong></p>
+</li>
+<li>
+<p><strong>Line Charts</strong></p>
+</li>
+<li>
+<p><strong>Pie Charts</strong></p>
+</li>
+<li>
+<p><strong>Counters</strong></p>
+</li>
+<li>
+<p><strong>Tables</strong></p>
+</li>
+</ul>
+<h3 id="dashboards">Dashboards<a class="headerlink" href="#dashboards" title="Permanent link">&para;</a></h3>
+<p>綿密に計画されたビジュアルを使い、賢いブロックチェーンアナリスト（ウィザード！）は、<a href="getting-started/dashboards/">Dune Dashboards</a>を通じてさまざまなデータの集まりについて物語を語ることができます。</p>
+<p>例えば、下のダッシュボード、<a href="https://dune.com/hagaetc/dex-metrics">Dex Metrics</a> by <a href="https://dune.com/hagaetc">@hagaetc</a>では、カテゴリーとしての「DEX」が成長していることが上部にはっきりと示されています。その下には、どのDEXが出来高で最も人気があるかが表示され、最後に時間的な変化を示す積み上げ棒グラフを見ることができます。</p>
+<p>このダッシュボード一つを見るだけで、誰でもDEX市場全体を把握することができるのです。</p>
+<p><img alt="Dashboard" src="images/dashboard.png" /></p>
+<h2 id="how-to-navigate-these-docs">How to navigate these docs<a class="headerlink" href="#how-to-navigate-these-docs" title="Permanent link">&para;</a></h2>
+<p>私たちは、「デューン」のすべてについて、誰が、何を、いつ、どこで、なぜ、どのように、という質問に答えるために、これらのドキュメントを作りました。</p>
+<p>ここでは、各セクションの内容を簡単にご紹介します。</p>
+<ul>
+<li>
+<p><a href="getting-started/">Getting Started</a>は、Duneの使い方を学ぶための場所です。</p>
+</li>
+<li>
+<p><a href="reference/">Reference</a>では、「誰が、何を、どこで」という質問に対する答えや、私たちがまとめたいくつかの補足資料をご覧いただけます。</p>
+</li>
+<li>
+<p><a href="spellbook/">Spellbook</a>には、スペルの作成と使用に必要なものがすべて揃っています。</p>
+</li>
+<li>
+<p><a href="api/">API</a> は、私たちの API をあなたのプロジェクトに統合するために必要なすべてのものを見つける場所です。</p>
+</li>
+</ul>
+<p>もし、あなたが杖を使いたくてうずうずしているなら、<a href="getting-started/query-quick-start/">Query Quick Start</a>に飛んで、最初のDune Queryを作るためのチュートリアルを見てください。</p>
+<h2 id="dune-is-a-community-effort">Dune is a community effort<a class="headerlink" href="#dune-is-a-community-effort" title="Permanent link">&para;</a></h2>
+<p>Dune.com では、すべてのクエリとデータセットがデフォルトで公開されています（クエリにプライバシーが必要な場合は、<a href="https://dune.com/pricing">Pro Plan</a> で対応可能です）。</p>
+<p>これにより、Wizardは他のクリエイターのQueryをフォーク、リミックスして、彼らの知識や洞察力の上に構築することが容易になります。</p>
+<p>逆に、新しいQueryを作成するたびに、Duneを通じて他の人がブロックチェーンや暗号資産について新しいことを学ぶのに役立ちます。</p>
+<p>このポジティブなフィードバックループによって、デューンコミュニティは、私たち全員がより多くを学ぶことができる、増え続けるクエリの範囲を通して、共に成功することができるのです。</p>
+<p>私たちの<a href="https://discord.gg/BJBHFR6sdy">Community Discord</a>に参加すれば、私たちのチームとコミュニティから世界レベルのサポートを受けることができます。</p>
+<p>楽しいLIVEに参加するために、<a href="reference/events/">events calendar</a>をチェックしてみてください。</p>
+<p>また、機能要望やバグレポートなど、フィードバックがあれば、<a href="https://feedback.dune.com">here</a>に提出してください。</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+      
+        
+        <a href="getting-started/" class="md-footer__link md-footer__link--next" aria-label="Next: Getting Started" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Getting Started
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes"], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

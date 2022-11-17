@@ -1,0 +1,3852 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Let's walk through an example of building a query using PoolTogether data! 🪄">
+      
+      
+      
+        <link rel="canonical" href="https://minaminao.github.io/duneanalytics/getting-started/query-quick-start/example/">
+      
+      <link rel="icon" href="../../../images/dune-icon-only.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Example - Dune Docs</title>
+      
+    
+    
+    <!-- Enable mkdocs-material to work without trailing slashes -->
+    <script>
+        const url = new URL(window.location)
+        if (!url.pathname.endsWith('/')) {
+            url.pathname += '/'
+            history.pushState({}, null, url)
+        }
+    </script>
+    <!-- Manually add the stylesheet, for hard-coded mkdocs-material and mkdocs-material-insiders -->
+    <link rel="stylesheet" href="/duneanalytics/assets/stylesheets/main.1d29e8d0.min.css">
+    
+
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Dune collects anonymised usage information for dune.com/docs with Posthog -->
+
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-find-the-main-point-of-entry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dune Docs" class="md-header__button md-logo" aria-label="Dune Docs" data-md-component="logo">
+      
+  <img src="../../../images/dune-icon-only.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dune Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="/duneanalytics" hreflang="ja" class="md-select__link">
+                    Japanese
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://dune.com/docs/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="https://docs.dune.com/v/chinese/" hreflang="zh" class="md-select__link">
+                    Chinese (Simplified)
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minaminao/duneanalytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Getting started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reference/" class="md-tabs__link">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../spellbook/" class="md-tabs__link">
+        Spellbook
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../api/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dune Docs" class="md-nav__button md-logo" aria-label="Dune Docs" data-md-component="logo">
+      
+  <img src="../../../images/dune-icon-only.png" alt="logo">
+
+    </a>
+    Dune Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minaminao/duneanalytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Getting started</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Query Quick Start</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Query Quick Start" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Query Quick Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Example
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Example
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-find-the-main-point-of-entry" class="md-nav__link">
+    1. Find the main point of entry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-explore-the-contract-flow" class="md-nav__link">
+    2. Explore the contract flow
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Explore the contract flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-a-limit-query" class="md-nav__link">
+    Run a LIMIT query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dune-v2-only-search-the-spellbook-docs" class="md-nav__link">
+    [Dune V2 Only] Search the Spellbook Docs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-decide-what-question-you-want-to-answer" class="md-nav__link">
+    3. Decide what question you want to answer
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Decide what question you want to answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-inspiration-from-dune-dashboards" class="md-nav__link">
+    Finding inspiration from Dune Dashboards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-build-your-query" class="md-nav__link">
+    4. Build your Query
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Build your Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pulling-relevant-buyer-data" class="md-nav__link">
+    Pulling relevant buyer data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joining-buyer-and-seller-data" class="md-nav__link">
+    JOINing buyer and seller data 🤝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-parameters" class="md-nav__link">
+    Adding Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ready-to-visualize" class="md-nav__link">
+    Ready to Visualize 👀
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-make-your-visualization" class="md-nav__link">
+    5. Make your Visualization
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Make your Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-and-formatting-bar-charts" class="md-nav__link">
+    Creating and Formatting Bar Charts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-queries-and-visualizations" class="md-nav__link">
+    Sharing Queries and Visualizations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-dashboard" class="md-nav__link">
+    Making a Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congrats-youve-made-a-dune-query" class="md-nav__link">
+    Congrats you've made a Dune Query!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../queries/">Queries</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Queries" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Queries
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queries/data-explorer/" class="md-nav__link">
+        The Data Explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queries/query-window/" class="md-nav__link">
+        The Query Window
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queries/query-results/" class="md-nav__link">
+        Query Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queries/parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queries/tips/" class="md-nav__link">
+        Query Tips
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../visualizations/">Visualizations</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Visualizations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Visualizations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizations/charts-graphs/" class="md-nav__link">
+        Charts & Graphs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visualizations/other-visualizations/" class="md-nav__link">
+        Other Visualizations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dashboards/" class="md-nav__link">
+        Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embeds/" class="md-nav__link">
+        Embeds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decoding-contracts/" class="md-nav__link">
+        Decoding Contracts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teams/" class="md-nav__link">
+        Teams
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Guides" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/dune-guides/" class="md-nav__link">
+        Dune Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/sql-guides/" class="md-nav__link">
+        SQL Guides
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/video-tutorial/" class="md-nav__link">
+        Video Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../use-cases/">Use Cases</a>
+          
+            <label for="__nav_2_10">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Use Cases" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/project-dashboards/" class="md-nav__link">
+        Project Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/sector-dashboards/" class="md-nav__link">
+        Sector Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../use-cases/ecosystem-dashboards/" class="md-nav__link">
+        Ecosystem Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/">Reference</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/support-feedback/" class="md-nav__link">
+        Support & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/dune-v2/">Dune v2</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Dune v2" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dune v2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/dune-v2/query-engine/" class="md-nav__link">
+        Query Engine
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/">Tables</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Tables" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/available-chains/" class="md-nav__link">
+        Available Chains
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3" type="checkbox" id="__nav_3_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/raw/">Raw Tables</a>
+          
+            <label for="__nav_3_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Raw Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Raw Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/blocks/" class="md-nav__link">
+        Blocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/event-logs/" class="md-nav__link">
+        Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/traces/" class="md-nav__link">
+        Traces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_3_6" type="checkbox" id="__nav_3_4_3_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/raw/solana/">Solana</a>
+          
+            <label for="__nav_3_4_3_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Solana" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/account-activity/" class="md-nav__link">
+        Account activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/blocks/" class="md-nav__link">
+        Blocks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/rewards/" class="md-nav__link">
+        Rewards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/transactions/" class="md-nav__link">
+        Transactions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/raw/solana/vote-transactions/" class="md-nav__link">
+        Vote Transactions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_4" type="checkbox" id="__nav_3_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/decoded/">Decoded Tables</a>
+          
+            <label for="__nav_3_4_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Decoded Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Decoded Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/decoded/call-tables/" class="md-nav__link">
+        Call Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/decoded/event-logs/" class="md-nav__link">
+        Event Logs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5" type="checkbox" id="__nav_3_4_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/spells/">Spells</a>
+          
+            <label for="__nav_3_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Spells" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Spells
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/dex.trades/" class="md-nav__link">
+        dex.trades
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/erc-20-balances/" class="md-nav__link">
+        ERC-20 balances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/labels/" class="md-nav__link">
+        Labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/nft.trades/" class="md-nav__link">
+        nft.trades
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/prices/" class="md-nav__link">
+        Prices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_5_7" type="checkbox" id="__nav_3_4_5_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/spells/token-standards/">Token Standards</a>
+          
+            <label for="__nav_3_4_5_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Token Standards" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_5_7">
+          <span class="md-nav__icon md-icon"></span>
+          Token Standards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/token-standards/erc-20/" class="md-nav__link">
+        ERC-20
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/token-standards/erc-721/" class="md-nav__link">
+        ERC-721
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/spells/token-standards/erc-1155/" class="md-nav__link">
+        ERC-1155
+      </a>
+    </li>
+  
+
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6" type="checkbox" id="__nav_3_4_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/community/">Community Tables</a>
+          
+            <label for="__nav_3_4_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Community Tables" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Community Tables
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6_2" type="checkbox" id="__nav_3_4_6_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/community/flashbots/">Flashbots</a>
+          
+            <label for="__nav_3_4_6_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Flashbots" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Flashbots
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/arbitrages/" class="md-nav__link">
+        arbitrages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/liquidations/" class="md-nav__link">
+        liquidations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/mev_summary/" class="md-nav__link">
+        mev\_summary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/sandwiched-swaps/" class="md-nav__link">
+        sandwiched swaps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/flashbots/sandwiches/" class="md-nav__link">
+        sandwiches
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_6_3" type="checkbox" id="__nav_3_4_6_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/tables/community/reservoir/">Reservoir</a>
+          
+            <label for="__nav_3_4_6_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reservoir" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_4_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reservoir
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/ask-events/" class="md-nav__link">
+        ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/asks/" class="md-nav__link">
+        asks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/attribute-keys/" class="md-nav__link">
+        attribute keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/attributes/" class="md-nav__link">
+        attributes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/collection-floor-ask-events/" class="md-nav__link">
+        collection floor ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/collections/" class="md-nav__link">
+        collections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/sales/" class="md-nav__link">
+        sales
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/token-attributes/" class="md-nav__link">
+        token attributes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/token-floor-ask-events/" class="md-nav__link">
+        token floor ask events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/community/reservoir/tokens/" class="md-nav__link">
+        tokens
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/tables/user-generated/" class="md-nav__link">
+        User Generated Tables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/types-labels/" class="md-nav__link">
+        Data Types and Labels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/does-dune-have-a-token/" class="md-nav__link">
+        Does Dune have a token?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/does-dune-have-an-api/" class="md-nav__link">
+        Does Dune have an API?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/how-are-results-refreshing/" class="md-nav__link">
+        How do results get refreshed?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/faq/how-does-dune-get-its-data/" class="md-nav__link">
+        How does Dune get data?
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" type="checkbox" id="__nav_3_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../reference/wizard-tools/">Wizard tools</a>
+          
+            <label for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Wizard tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_7">
+          <span class="md-nav__icon md-icon"></span>
+          Wizard tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/wizard-tools/blockchain-explorers/" class="md-nav__link">
+        Blockchain Explorers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/wizard-tools/helpful-dashboards/" class="md-nav__link">
+        Helpful Dashboards
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/wizard-tools/utility-queries/" class="md-nav__link">
+        Utility Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/dune-bounties/" class="md-nav__link">
+        Dune Bounties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/dune-explorer/" class="md-nav__link">
+        The Dune Explorer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/events/" class="md-nav__link">
+        Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/pro/" class="md-nav__link">
+        Dune Pro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/recommended-reading/" class="md-nav__link">
+        Recommended Reading
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/press-kit/" class="md-nav__link">
+        Press Kit
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/">Spellbook</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Spellbook" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Spellbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/spellbook-model-docs/" class="md-nav__link">
+        Spellbook Model Docs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/getting-started/">Getting started</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Getting started" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/data-modelling/" class="md-nav__link">
+        Data Modelling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/data-sources/" class="md-nav__link">
+        Data Sources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/tests/" class="md-nav__link">
+        Tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/spells/" class="md-nav__link">
+        Spells
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/getting-started/submissions/" class="md-nav__link">
+        Submissions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/how-to-guides/">How to guides</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How to guides" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          How to guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../spellbook/examples/">Examples</a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/reformatted/" class="md-nav__link">
+        Reformatted Transfers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/daily-aggregation/" class="md-nav__link">
+        Daily Aggregation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/rolling-sum/" class="md-nav__link">
+        Rolling Sum of Daily Transfers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/examples/final-day-balance/" class="md-nav__link">
+        Final Daily Balance
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spellbook/spellbook-workshop-prerequisite/" class="md-nav__link">
+        Spellbook Workshop Prerequisites
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../api/">API</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../api/quick-start/">Quick Start</a>
+          
+            <label for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Quick Start" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          Quick Start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/quick-start/api-py/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/quick-start/api-js/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/quick-start/community-clients/" class="md-nav__link">
+        Community Clients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/quick-start/api-ready-queries/" class="md-nav__link">
+        API Ready Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../api/api-reference/">API Reference</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api-reference/authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api-reference/execute-query-id/" class="md-nav__link">
+        Execute Query ID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api-reference/execution-status/" class="md-nav__link">
+        Execution Status
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api-reference/execution-results/" class="md-nav__link">
+        Execution Results
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api-reference/cancel-execution/" class="md-nav__link">
+        Cancel Execution
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/api-reference/errors/" class="md-nav__link">
+        Error Codes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/FAQ/functionality/" class="md-nav__link">
+        Functionality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/FAQ/billing-pricing/" class="md-nav__link">
+        Billing & Pricing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/FAQ/other/" class="md-nav__link">
+        Other
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/FAQ/TOS/" class="md-nav__link">
+        TOS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-find-the-main-point-of-entry" class="md-nav__link">
+    1. Find the main point of entry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-explore-the-contract-flow" class="md-nav__link">
+    2. Explore the contract flow
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Explore the contract flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-a-limit-query" class="md-nav__link">
+    Run a LIMIT query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dune-v2-only-search-the-spellbook-docs" class="md-nav__link">
+    [Dune V2 Only] Search the Spellbook Docs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-decide-what-question-you-want-to-answer" class="md-nav__link">
+    3. Decide what question you want to answer
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Decide what question you want to answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-inspiration-from-dune-dashboards" class="md-nav__link">
+    Finding inspiration from Dune Dashboards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-build-your-query" class="md-nav__link">
+    4. Build your Query
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Build your Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pulling-relevant-buyer-data" class="md-nav__link">
+    Pulling relevant buyer data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joining-buyer-and-seller-data" class="md-nav__link">
+    JOINing buyer and seller data 🤝
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-parameters" class="md-nav__link">
+    Adding Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ready-to-visualize" class="md-nav__link">
+    Ready to Visualize 👀
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-make-your-visualization" class="md-nav__link">
+    5. Make your Visualization
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Make your Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-and-formatting-bar-charts" class="md-nav__link">
+    Creating and Formatting Bar Charts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-queries-and-visualizations" class="md-nav__link">
+    Sharing Queries and Visualizations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-dashboard" class="md-nav__link">
+    Making a Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congrats-youve-made-a-dune-query" class="md-nav__link">
+    Congrats you've made a Dune Query!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/minaminao/duneanalytics/edit/master/docs/getting-started/query-quick-start/example.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+  <h1>Example</h1>
+
+<p>Let's walk through an example of building a query using <a href="https://opensea.io/">OpenSea</a> data to:</p>
+<ul>
+<li>Figure out who the top buyers and sellers are by USD</li>
+<li>Visualize this in some sort of distribution, over some sort of time period.</li>
+</ul>
+<p>If you get stuck, <a href="https://dune.com/queries/1424158?">fork and test out the demo query here</a> or ask for help in the <a href="https://discord.com/channels/757637422384283659/757641002138730588">#query-questions Discord channel</a>!</p>
+<h2 id="1-find-the-main-point-of-entry">1. Find the main point of entry<a class="headerlink" href="#1-find-the-main-point-of-entry" title="Permanent link">&para;</a></h2>
+<p>The easiest place to start your query exploration is the <a href="../../queries/data-explorer/">Dune Data Explorer</a>, for two reasons:</p>
+<ol>
+<li>Searching here will let us discover whether the contracts we'll need have already been decoded; if so we'll have a lot less work to do.</li>
+<li>If our data is already <a href="../../decoding-contracts/">Decoded</a>, the contracts, calls, events, and data points will probably have obvious labels - eg <code>amount_usd</code> is the US dollar amount an NFT was bought/sold for. So we might not need to dig through the project docs to understand which contracts and data we need to build our Query.</li>
+</ol>
+<p>So, let's get started by switching to the Dune V2 data set and searching for "opensea" to see what we find.</p>
+<p>By using Dune V2, we get access to <a href="../../spellbook/">Spells</a> which can let us access data from multiple blockchains in one Query - assuming the spell for OpenSea exists (Dune V2 is still in beta so not all data has been migrated yet).</p>
+<p><img alt="dune v2 search opensea" src="../images/dune-v2-search-opensea.gif" /></p>
+<p>Awesome! Looks like we have an "opesea trades" Spell (Spells are marked by the 🪄 icon in the data explorer).</p>
+<h2 id="2-explore-the-contract-flow">2. Explore the contract flow<a class="headerlink" href="#2-explore-the-contract-flow" title="Permanent link">&para;</a></h2>
+<p>There are a couple of ways we can check to see what data we have access to in there.</p>
+<h3 id="run-a-limit-query">Run a <code>LIMIT</code> query<a class="headerlink" href="#run-a-limit-query" title="Permanent link">&para;</a></h3>
+<p>The first way is to run a <code>SELECT *</code> + <code>LIMIT</code> search to see what comes up.</p>
+<p><code>SELECT *</code> tells Dune to send us every column avaiable in this table.</p>
+<p><code>LIMIT</code> limits the number of rows returned so we don't try to return the whole table (this would take forever to load).</p>
+<p><img alt="opensea trades limit query" src="../images/opensea-trades-limit-query.gif" /></p>
+<p>Note a couple of things here:</p>
+<ol>
+<li>Dune has a nice auto complete feature - just start typing to see options and hit enter to paste (<a href="../../queries/query-window/">learn more about how the Query Window works here</a>)</li>
+<li>You can click the &gt;&gt; next to a table name in the Data Explorer to automatically paste that into your query (<a href="../../queries/data-explorer/">learn more about the Data Explorer here</a>)</li>
+</ol>
+<p>Also since this is a pre-made how to guide you can just be lazy and copy this code:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+From that Query you'll get a table with data to explore like this:</p>
+<p><div class="video-container"><iframe src="https://dune.com/embeds/1429723/2425000/ffbea8da-7a78-4d3d-8297-dae9989c64b8" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<h3 id="dune-v2-only-search-the-spellbook-docs">[Dune V2 Only] Search the Spellbook Docs<a class="headerlink" href="#dune-v2-only-search-the-spellbook-docs" title="Permanent link">&para;</a></h3>
+<p>Another benefit of Dune V2 is the special set of auto-generated docs that come with it.</p>
+<p>These can help us quickly figure out what data exists inside of V2 tables AND see how those tables are constructed in case we need it to make more complex queries.</p>
+<p>Let's head over to <a href="https://dune.com/spellbook">https://dune.com/spellbook</a> and search for <code>opensea</code> using the top search bar:</p>
+<p><img alt="opensea spellbook docs search" src="../images/opensea-spellbook-docs-search.gif" /></p>
+<p>Here we find an <a href="https://dune.com/spellbook#!/model/model.spellbook.opensea_trades"><code>opensea_trades</code> table</a> that probably has some interesting data!</p>
+<p>Scrolling through the columns section we can see all the different data columns it has.</p>
+<p>Since this is a <a href="../../../reference/tables/decoded/">Decoded Table</a>, a lot of the labels - like <code>amount_usd</code> - make sense just by reading them.</p>
+<p>For those that aren't so obvious - like <code>trade_type</code> - we can click to get a description:</p>
+<p><img alt="searching spellbook docs columns" src="../images/searching-spellbook-docs-columns.gif" /></p>
+<p>The Spellbook Docs also have a Lineage Graph which lets us view the tables that were used to build, as well as the tables built from <code>opensea_trades</code>:</p>
+<p><img alt="viewing lineage graph" src="../images/viewing-lineage-graph.gif" /></p>
+<p>We can also click the expand button in the right hand corner to see the complete flow of parent and child tables, then right click on any of them to view their documentation as well:</p>
+<p><img alt="explore full lineage graph" src="../images/explore-full-lineage-graph.gif" /></p>
+<p>For a complete list of things you can do with the <a href="../../../spellbook/spellbook-model-docs/">Spellbook Docs see this page</a>.</p>
+<h2 id="3-decide-what-question-you-want-to-answer">3. Decide what question you want to answer<a class="headerlink" href="#3-decide-what-question-you-want-to-answer" title="Permanent link">&para;</a></h2>
+<p>This step could easily be the first, and is in many cases - a Wizard will hear about a new NFT launch on crypto twitter, be shilled a new project on Discord, or read a story about an emerging market segment and dive into Dune to pull data and learn more.</p>
+<p>And in this example, to make it easy on you, we've already decided to:</p>
+<ul>
+<li>Figure out who the top OpenSea buyers and sellers are by USD</li>
+<li>Visualize this in some sort of distribution, over some sort of time period.</li>
+</ul>
+<h3 id="finding-inspiration-from-dune-dashboards">Finding inspiration from Dune Dashboards<a class="headerlink" href="#finding-inspiration-from-dune-dashboards" title="Permanent link">&para;</a></h3>
+<p>As a beginner, if you don't already have an idea of what you want to build, exploring Dune data from the Query builder is a fun way to dive in.</p>
+<p>You can also use the <a href="../../../reference/dune-explorer/">Dune Explorer</a> to see what others are building as well!</p>
+<p>Though this might not lead you to building the next <a href="https://dune.com/rchen8/defi-users-over-time">DeFi users over time</a> (created by <a href="https://dune.com/rchen8">@richardchen</a>), it's a great way to learn more about using Dune as you can see what's possible and even fork existing Queries to modify further!</p>
+<p>As a quick example of this, let's head over to <a href="https://dune.com/browse/dashboards">dune.com</a> which will take us to right to the Dashboard Explorer page.</p>
+<p><img alt="dashboard explorer example" src="../images/dashboard-explorer-example.png" /></p>
+<p>By default, the Explorer lists dashboards trending in the last 4 hours.</p>
+<p>Using the right sidebar, we can also search by:</p>
+<ul>
+<li>Newest dashboards</li>
+<li>Dashboards with the most stars (Favorites)</li>
+<li>By Tags like DeFi and NFT</li>
+</ul>
+<p><img alt="dashboard search features" src="../images/dashboard-search-features.png" /></p>
+<p>At the time of writing, <a href="https://dune.com/niftytable">@niftytable's</a> <a href="https://dune.com/niftytable/trending-contracts">Trending Contracts</a> dashboard is trending in Dune so let's take a look:</p>
+<p><img alt="trending contracts dashboard example" src="../images/Trending-Contracts-dashboard-example.png" /></p>
+<p>Hmm, looks like this shows us top contracts by number of transactions, active wallets, and gas spent.</p>
+<p>But what about by USD value of transactions?</p>
+<p>To fork these Queries and add that data we just click the <a href="../visualizations">Visualization name</a> (in this case a <a href="../../visualizations/other-visualizations/">Table Visualization</a>), then click the <span class="fk-btn-3">Fork</span> button at the top left:</p>
+<p><img alt="fork query example" src="../images/fork-query-example.gif" /></p>
+<p>From there we could explore, test, and expand on <a href="https://dune.com/niftytable">@niftytable's</a> original Query to make it our own!</p>
+<h2 id="4-build-your-query">4. Build your Query<a class="headerlink" href="#4-build-your-query" title="Permanent link">&para;</a></h2>
+<p>Getting back to our OpenSea Query example, our goal again is to:</p>
+<ul>
+<li>Figure out who the top OpenSea buyers and sellers are by USD</li>
+<li>Visualize this in some sort of distribution, over some sort of time period.</li>
+</ul>
+<p>We've run an initial limit search and found that, among other data points, this Spell has <code>buyer</code> and <code>seller</code> wallet addresses, as well as <code>amount_usd</code> for these transactions.</p>
+<h3 id="pulling-relevant-buyer-data">Pulling relevant <code>buyer</code> data<a class="headerlink" href="#pulling-relevant-buyer-data" title="Permanent link">&para;</a></h3>
+<p>So let's refine our Query a bit to step closer to where we want to be, starting by:</p>
+<ol>
+<li>Only pulling info for buyers</li>
+<li>Adding all USD amounts for transactions for the same buyer together</li>
+<li>Limiting our search by Time, say the last day, instead of by number of rows</li>
+</ol>
+<p>Here's the before and after of how to do that:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>--</code> lines are SQL comments here for clarification, you don't need these to run this code yourself. We also added more spacing than needed to make it easier to read in the "After" Tab, so use the "Copy/Paste" tab to run this Query yourself!</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Before</label><label for="__tabbed_1_2">After</label><label for="__tabbed_1_3">Copy/Paste</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Returns the `buyer` column from opensea.trades, then adds all the `amount_usd` values together and labels them as `buy_vol`</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">buy_vol</span><span class="w"> </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">-- limits results to the past 24 hours and removes resuls where amount_usd is empty (for some reason that data is unavailable in the opensea.trades Spell)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">-- Tells Dune to SUM USD values for each buyer and return the results that way</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">buy_vol</span><span class="w"> </span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><img alt="query example v2" src="../images/query-example-v2.png" /></p>
+<h3 id="joining-buyer-and-seller-data"><code>JOIN</code>ing <code>buyer</code> and <code>seller</code> data 🤝<a class="headerlink" href="#joining-buyer-and-seller-data" title="Permanent link">&para;</a></h3>
+<p>Cool, looks like that works for buyers!</p>
+<p>Now to make this work for buyers and sellers, we're going to have to get fancy.</p>
+<p>We'll wrap this basic query in a <code>WITH</code> statement, so we can return two separate tables, one for buyers and sellers, then use <code>FULL JOIN</code> to create a new table with buy, sell, and total USD volume for each unique wallet address.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Before</label><label for="__tabbed_2_2">After</label><label for="__tabbed_2_3">Copy/Paste</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">buy_vol</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w"> </span><span class="c1">-- Here we define a new table `buyer_vol` based on the SQL query within the below ()</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">WITH</span><span class="w"> </span><span class="n">buyer_vol</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">buy_vol</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">-- The `,` here lets us continue our `WITH` statement with an additional table/query</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">),</span><span class="w"> </span><span class="n">seller_vol</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">seller</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sell_vol</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">),</span><span class="w"> </span><span class="n">all_txn</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1">-- Here we&#39;re relabeling the `buyer` column, which contains a wallet address, as `wallet`, returning the buy/sell volumes from each of our above tables, then summing those values as `ttl_vol`</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">wallet</span><span class="p">,</span><span class="w"> </span><span class="n">buyer_vol</span><span class="p">.</span><span class="n">buy_vol</span><span class="p">,</span><span class="w"> </span><span class="n">seller_vol</span><span class="p">.</span><span class="n">sell_vol</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">buyer_vol</span><span class="p">.</span><span class="n">buy_vol</span><span class="o">+</span><span class="n">seller_vol</span><span class="p">.</span><span class="n">sell_vol</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ttl_vol</span><span class="w"> </span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="k">FROM</span><span class="w"> </span><span class="n">buyer_vol</span><span class="w"></span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="c1">-- &quot;JOIN&quot; is used to combine two tables that share a common column; &quot;FULL&quot; ensures our new table includes people who only bought, only sold, and both. Learn more about JOIN in [Dune V2 Apache Spark SQL here](https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-join.html#full-join).</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="k">FULL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">seller_vol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">buyer_vol</span><span class="p">.</span><span class="n">buyer</span><span class="o">=</span><span class="n">seller_vol</span><span class="p">.</span><span class="n">seller</span><span class="w"> </span><span class="c1">-- here we&#39;re combining our `buyer_vol` and `seller_vol` tables by matching `buyer` and `seller` which we know are both wallet addresses</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="c1">-- Here were ensuring our table is ordered by total trade volume, starting with the highest number to the lowest</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ttl_vol</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="c1">-- Finally, below we return all the columns and rows from the combined table we just made; Limit to the TOP 10 wallets by total volume</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="k">FROM</span><span class="w"> </span><span class="n">all_txn</span><span class="w"></span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">WITH</span><span class="w"> </span><span class="n">buyer_vol</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">buy_vol</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">),</span><span class="w"> </span><span class="n">seller_vol</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">seller</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount_usd</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sell_vol</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">FROM</span><span class="w"> </span><span class="n">opensea</span><span class="p">.</span><span class="n">trades</span><span class="w"></span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">block_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">amount_usd</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">),</span><span class="w"> </span><span class="n">all_txn</span><span class="w"> </span><span class="k">AS</span><span class="w"></span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">buyer</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">wallet</span><span class="p">,</span><span class="w"> </span><span class="n">buyer_vol</span><span class="p">.</span><span class="n">buy_vol</span><span class="p">,</span><span class="w"> </span><span class="n">seller_vol</span><span class="p">.</span><span class="n">sell_vol</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">buyer_vol</span><span class="p">.</span><span class="n">buy_vol</span><span class="o">+</span><span class="n">seller_vol</span><span class="p">.</span><span class="n">sell_vol</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ttl_vol</span><span class="w"></span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="k">FROM</span><span class="w"> </span><span class="n">buyer_vol</span><span class="w"></span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="k">FULL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">seller_vol</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">buyer_vol</span><span class="p">.</span><span class="n">buyer</span><span class="o">=</span><span class="n">seller_vol</span><span class="p">.</span><span class="n">seller</span><span class="w"></span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ttl_vol</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="k">FROM</span><span class="w"> </span><span class="n">all_txn</span><span class="w"></span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><img alt="query quick start example v3" src="../images/Query-Quick-Start-Example-v3.png" /></p>
+<h3 id="adding-parameters">Adding Parameters<a class="headerlink" href="#adding-parameters" title="Permanent link">&para;</a></h3>
+<p>Now for extra points, let's add a <a href="../../queries/parameters/">Parameter</a> so people who view our Visualizations can filter by 1 day, 1 week, and 1 month time periods.</p>
+<p>To do that, let's highlight our <code>24 hour</code> interval measure, then click the <span class="fk-btn-5">Add parameter</span> button</p>
+<p><img alt="add parameter to query" src="../images/add-parameter-to-query.gif" /></p>
+<p>Then click the Gear icon in the field that appears below the Query Window to modify our parameter:</p>
+<p><img alt="modify parameter" src="../images/modify-parameter.gif" /></p>
+<p>Here we'll:</p>
+<ol>
+<li>Rename unnamed_parameter -&gt; time period</li>
+<li>Make the Parameter Type "List"</li>
+<li>Add the values "1 day, 1 week, 1 month"</li>
+<li>And save!</li>
+</ol>
+<p><img alt="parameter settings modified" src="../images/parameter-settings-modified.png" /></p>
+<p>Lastly, we'll update our other <code>WHERE</code> statements with the parameter.</p>
+<h3 id="ready-to-visualize">Ready to Visualize 👀<a class="headerlink" href="#ready-to-visualize" title="Permanent link">&para;</a></h3>
+<p>With that, we have the data we need to make the visualizations we're aiming for. 🪄</p>
+<p>Here are our results, click "Query results" below to see the Query and fork it if you'd like! 🧙</p>
+<p><div class="video-container"><iframe src="https://dune.com/embeds/1424158/2415702/1e88ea77-8083-4c9b-a45c-eab3b8e8fc0e" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<h2 id="5-make-your-visualization">5. Make your Visualization<a class="headerlink" href="#5-make-your-visualization" title="Permanent link">&para;</a></h2>
+<p>Alright, now we want to "Visualize this in some sort of distribution, over some sort of time period."</p>
+<p>We've got our time period piece in place with our Parameter, and we have total USD bought, sold, and wallet data.</p>
+<p>So for {{time period}} let's look at our top 10 wallets by total volume, as well as what portion of that volume is buying vs selling.</p>
+<h3 id="creating-and-formatting-bar-charts">Creating and Formatting Bar Charts<a class="headerlink" href="#creating-and-formatting-bar-charts" title="Permanent link">&para;</a></h3>
+<p>To do that we'll use a Bar Chart <a href="../../visualizations/">Visualization</a>:</p>
+<p><img alt="select bar chart visualization" src="../images/select-bar-chart-visualization.gif" /></p>
+<p>Scrolling down we see Visualization options, it looks like the "Results Data" defaulted to making the x column <code>wallet</code> and y column 1 <code>buy_vol</code>, which is a good start.</p>
+<p>Let's add <code>sell volume</code> to y column 2 and then in the "Chart options" Enable Stacking so the values are layered on top of each other:</p>
+<p><img alt="stacking buy and sell vol" src="../images/stacking-buy-sell-vol.gif" /></p>
+<p>By default, Dune sorted our x-axis alphabetically. Let's uncheck "Sort Values" to get it back to being sorted by volume, then "Reverse Order" so that our graph is lowest number to highest (the opposite of our data table but the way we're love to see graphs - up and to the right):</p>
+<p><img alt="up and to the right" src="../images/up-and-to-the-right-graph.gif" /></p>
+<p>Our USD amounts are also a bit confusing, so let's update the "Label Format" in Y-axis options to <code>$0.0a</code> which will turn a number like 12345.6789 into "$12.3k":</p>
+<p><img alt="fixing y axis numbers" src="../images/fixing-y-axis-numbers.gif" /></p>
+<p>Then we'll update our title and x/y axis labels to make a nice, easy to understand chart:</p>
+<p><div class="video-container"><iframe src="https://dune.com/embeds/1424158/2432690/f66ae186-8d90-426b-bf80-b8fac9763343" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<p>Learn more about <a href="../../features/queries/query-results/#formatting-results-tables">formatting Visualizations here</a>!</p>
+<h3 id="sharing-queries-and-visualizations">Sharing Queries and Visualizations<a class="headerlink" href="#sharing-queries-and-visualizations" title="Permanent link">&para;</a></h3>
+<p><a href="../../embeds/">To share your Queries</a> (either embedding them like the above or just to share a lin), click the <span class="fk-btn-3">Embed</span> button above the Query window:</p>
+<p><img alt="embed button location" src="../images/embed-button-location.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The embed button works as a stand alone link and as a way to embed your live graphs into websites/apps. If your Query has no Visualizations, the link will be to the Query Results table. If you have multiple Visualizations, the link will be for whichever Visualization you've selected when you clicked the Embed button.</p>
+</div>
+<p>With a lot of copy/paste (literally and figuratively), we can make this same graph for just total volume so we don't have to do the mental math of adding up the sell/buy volume:</p>
+<p><div class="video-container"><iframe src="https://dune.com/embeds/1424158/2432796/69f3abd6-8163-4e74-a5bd-19ae01ddd967" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
+<h3 id="making-a-dashboard">Making a Dashboard<a class="headerlink" href="#making-a-dashboard" title="Permanent link">&para;</a></h3>
+<p>Finally, let's add our two visualizations to a starter <a href="../../dashboards/">Dashboard</a>.</p>
+<p>To do that we:</p>
+<ol>
+<li>Click the <span class="fk-btn-3">Add to dashboard</span> button above our Visualization.</li>
+<li>Click <span class="fk-btn-3">New dashboard</span> button in the popup.</li>
+<li>Give our Dashboard a name and save it.</li>
+<li>Click the <span class="fk-btn-2">Add</span> button.</li>
+</ol>
+<p><img alt="add visualization to dashboard example" src="../images/add-visualization-to-dashboard-example.gif" /></p>
+<p>Then we just add our other visualizations to the Dashboard we created and:</p>
+<p><img alt="dashboard example" src="../images/dashboard-example.png" /></p>
+<p>To make our Dashboard look nice, we hit the edit button and can drag and resize our Visualizations:</p>
+<p><img alt="rearranging our dashboard" src="../images/rearranging-dashboard.gif" /></p>
+<p>And we can add text widgets to explain our dashboards and how they work!</p>
+<p><img alt="add text widget explainer" src="../images/add-text-widget-explainer.gif" /></p>
+<p>And with that, we're ready to hit the share button to get a sharable Dashboard link like this one: <a href="https://dune.com/cryptofreedman/query-quick-start">https://dune.com/cryptofreedman/query-quick-start</a></p>
+<h2 id="congrats-youve-made-a-dune-query">Congrats you've made a Dune Query!<a class="headerlink" href="#congrats-youve-made-a-dune-query" title="Permanent link">&para;</a></h2>
+<p>To go deeper as you're getting started, check out the other pages in our Getting Started section using the left side bar. 👈</p>
+<p>Check out the Features section above to learn more about how Dune works or the Tables section to learn more about the data you can query and use with Dune. 👆</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Query Quick Start" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Query Quick Start
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../queries/" class="md-footer__link md-footer__link--next" aria-label="Next: Queries" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Queries
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

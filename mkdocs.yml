@@ -1,7 +1,7 @@
 site_name: Dune Docs
-site_url: https://dune.com/docs
-repo_url: https://github.com/duneanalytics/docs
-site_dir: site/docs
+site_url: https://minaminao.github.io/duneanalytics
+repo_url: https://github.com/minaminao/duneanalytics
+site_dir: site/dune-analytics
 theme:
   language: en
   name: material
@@ -44,8 +44,11 @@ plugins:
 extra:
   generator: false
   alternate:
+    - name: Japanese
+      link: /duneanalytics
+      lang: ja
     - name: English
-      link: /docs
+      link: https://dune.com/docs/
       lang: en
     - name: Chinese (Simplified)
       link: https://docs.dune.com/v/chinese/

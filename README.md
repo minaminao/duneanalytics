@@ -1,31 +1,28 @@
 # Dune Docs
+Dune Docsへようこそ!
 
-Welcome to the Dune Docs!
+Duneは、コミュニティによる、コミュニティのための暗号分析ツールです。
 
-Dune is a crypto analytics tool by and for the community.
+これらのドキュメントは、オープンソースであり、[Material for MkDocs](https://squidfunk.github.io/mkdocs-material)で構築されています。
 
-These docs are open source and built with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
-
-Any contributions are welcome, from spelling mistakes to entire guides on the EVM. Just submit a PR.
+誤字脱字からEVMのガイドまで、どんな投稿でも歓迎します。PRを送信してください。
 
 ## Install
+ローカルでドキュメントを実行したい場合は、以下の手順に従ってください。
 
-If you'd like to run the docs locally, follow these instructions.
+[Miniconda](https://docs.conda.io/en/latest/miniconda.html) などでローカルの python 3 環境をセットアップする。
 
-Setup your local python 3 environment, e.g. with [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
-
-Install the python libraries:
+Pythonのライブラリをインストールします。
 
 ```bash
 pip install -r requirements.txt
 ```
-
-Run the docs locally:
+ローカルでドキュメントを実行する。
 
 ```bash
 mkdocs serve
 ```
-
 ## Notes
+内部リンクにはマークダウンファイルへの相対パスを使用することを忘れないでください (例: `[link](../../relative/path/to/index.md)`)。そうしないと、mkdocsコンパイラは壊れた内部リンクを検出できません - [read more](/index.md)。
 
-Remember to use relative paths to markdown files for internal links (e.g. `[link](../../relative/path/to/index.md)`), otherwise the mkdocs compiler will not detect broken internal links - [read more](/index.md).
+
